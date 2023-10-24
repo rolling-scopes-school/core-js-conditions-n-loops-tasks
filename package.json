@@ -1,0 +1,27 @@
+{
+    "name": "corejs-conditions-n-loops",
+    "version": "1.0.0",
+    "description": "Core JS conditions and loops task",
+    "main": "index.js",
+    "scripts": {
+        "test": "npm run lint && mocha",
+        "lint": "node node_modules/eslint/bin/eslint.js ./src",
+        "lint:fix": "node node_modules/eslint/bin/eslint.js ./src --fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rolling-scopes-school/coreJs-conditions-n-loops-tasks.git"
+    },
+    "author": "mikaleinik",
+    "license": "MIT",
+    "devDependencies": {
+        "eslint": "^6.6.0",
+        "eslint-config-airbnb-base": "^14.0.0",
+        "eslint-plugin-import": "^2.18.2",
+        "mocha": "^10.2.0"
+    },
+    "bugs": {
+        "url": "https://github.com/rolling-scopes-school/coreJs-conditions-n-loops-tasks/issues"
+    },
+    "homepage": "https://github.com/rolling-scopes-school/coreJs-conditions-n-loops-tasks#readme"
+}
