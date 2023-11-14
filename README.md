@@ -42,16 +42,16 @@ The task is to implement functions on different Core JS topics. This module requ
     ```
     Implement the function by any way and verify your solution by running tests until the failed test become passed (green).
 8. Run `npm test` in command line. If everything is OK you can try to resolve the next task.
-9. You will see the number of passing and pending tests: `101` of passing tests is equal to `100` in score.
 
 ## Submit to [rs app](https://app.rs.school/)
 1. Open [rs app](https://app.rs.school/) and login
 2. Go to [submit task page](https://app.rs.school/course/submit-task?course=rs-2023-q4)
-3. Select your task (Core JS Numbers)
+3. Select your task (Core JS Conditions-n-loops)
 4. Press submit button and enjoy
 
 ## Notes
-* We recommend you to use nodejs of version 14 or lower. If you using any of features that does not supported by node `v14`, score won't be submitted.
+* We recommend you to use nodejs of version 16 or lower. If you using any of features that does not supported by node `v16`, score won't be submitted.
+* Installing nodejs `v16` is optional, you can run jobs using your version and not use methods that are not in nodejs `v16`.
 * Please be sure that each of your test in limit of 30sec.
 * You will get 0 (zero) if you have any eslint's errors or warnings.
 
@@ -66,7 +66,7 @@ https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
   I'll let you apply some rules when you saving your files in the repo. This plugin will use config-file `.editorconfig` that you can see in the root folder. It lets you save the file with needed line endings, trim whitespaces, etc.
 - Finally, you need to apply linter's autofix feature in order to fix all linebreaks that was already changed to "CLRF":
 ```
-$ npm run lint -- --fix
+$ npm run lint:fix
 ``` 
 
 ___
