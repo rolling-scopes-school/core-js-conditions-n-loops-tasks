@@ -135,20 +135,18 @@ function isContainNumber(/* num, digit */) {
 }
 
 /**
- * Returns a sorted array.
- * If the direction is true it returns an ascending sorted array,
- * if false it returns a descending sorted array
+ * Returns an ascending sorted array.
  * In this task, the use of methods of the Array classes is not allowed.
  *
- * @param {Array<number>} arr
- * @param {boolean} direction
+ * @param {number[]} arr
  * @return {boolean}
  *
  * @example:
- *  [2, 9, 5], true     => [2, 5, 9]
- *  [2, 9, 5], false    => [9, 5, 2]
+ *  [2, 9, 5]       => [2, 5, 9]
+ *  [2, 9, 5, 9]    => [2, 5, 9, 9]
+ *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr, direction */) {
+function sortByAsc(/* arr */) {
   throw new Error('Not implemented');
 }
 
@@ -156,7 +154,7 @@ function sortByAsc(/* arr, direction */) {
  * Returns the original array rotated by an angle of 90 degrees clockwise.
  * In this task, the use of methods of the String and Array class is not allowed.
  *
- * @param {Array<number>} arr
+ * @param {number[]} arr
  * @return {boolean}
  *
  * @example:
