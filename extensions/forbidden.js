@@ -118,10 +118,16 @@ function isStringUsed(fn) {
   return methods.some((method) => fnStr.includes(method));
 }
 
+function isUtilityUsed(fn) {
+  // TODO необходима проверка не только названия, но и сравнения содержимого
+  return fn.toString().includes('utilityRotateMatrix');
+}
+
 module.exports = {
   isCommented,
   isNumberUsed,
   isMathUsed,
   isArrayUsed,
   isStringUsed,
+  isUtilityUsed,
 };
