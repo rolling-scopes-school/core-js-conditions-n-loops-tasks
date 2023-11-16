@@ -34,6 +34,24 @@ describe('core-js-conditions-n-loops', () => {
       `Using methods of Array class is not allowed`
     );
   });
+  it.optional('isCheckmate should return the maximum of three numbers', () => {
+    assert.equal(tasks.isCheckmate({ x: 1, y: 1 }, { x: 5, y: 5 }), true);
+    assert.equal(tasks.isCheckmate({ x: 2, y: 1 }, { x: 2, y: 8 }), true);
+    assert.equal(tasks.isCheckmate({ x: 1, y: 1 }, { x: 2, y: 8 }), false);
+    assert.equal(tasks.isCheckmate({ x: 1, y: 1 }, { x: 2, y: 8 }), false);
+    assert.equal(tasks.isCheckmate({ x: 3, y: 3 }, { x: 1, y: 2 }), false);
+    assert.equal(tasks.isCheckmate({ x: 2, y: 5 }, { x: 6, y: 2 }), false);
+    assert.equal(tasks.isCheckmate({ x: 3, y: 4 }, { x: 5, y: 4 }), true);
+    assert.equal(tasks.isCheckmate({ x: 5, y: 3 }, { x: 4, y: 6 }), false);
+    assert.equal(tasks.isCheckmate({ x: 6, y: 4 }, { x: 3, y: 7 }), true);
+    assert.equal(tasks.isCheckmate({ x: 8, y: 7 }, { x: 2, y: 4 }), false);
+    assert.equal(tasks.isCheckmate({ x: 3, y: 5 }, { x: 8, y: 4 }), false);
+    assert.equal(
+      forbidden.isCommented(tasks.getMaxNumber),
+      false,
+      `Be sure to remove comments from the final solution`
+    );
+  });
   it.optional(
     'isIsoscelesTriangle should return boolean whether the triangle is isosceles',
     () => {
@@ -214,14 +232,47 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+  it.optional(
+    'getBalanceIndex should returns the index of the balancer element',
+    () => {
+      assert.equal(tasks.getBalanceIndex([1, 2, 5, 3, 0]), 2);
+      assert.equal(tasks.getBalanceIndex([2, 3, 9, 5]), 2);
+      assert.equal(tasks.getBalanceIndex([1, 2, 3, 4, 5]), -1);
+      assert.equal(tasks.getBalanceIndex([1, 1]), -1);
+      assert.equal(tasks.getBalanceIndex([1, 2, 3, 4, 5, 6, 7, 8, 9]), -1);
+      assert.equal(tasks.getBalanceIndex([]), -1);
+      const length = 9;
+      for (let i = 0; i < 5; i += 1) {
+        const balanced = utility.getBalancedArrayUtil(length * (i + 1));
+        assert.equal(
+          tasks.getBalanceIndex(balanced.arr),
+          balanced.balanceIndex
+        );
+      }
+      assert.equal(
+        forbidden.isCommented(tasks.getBalanceIndex),
+        false,
+        `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.getBalanceIndex),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+    }
+  );
   it.optional('sortByAsc should return a sorted array', () => {
     assert.deepEqual(tasks.sortByAsc([2, 9, 5]), [2, 5, 9]);
     assert.deepEqual(tasks.sortByAsc([2, 9, 5, 9]), [2, 5, 9, 9]);
     assert.deepEqual(tasks.sortByAsc([-2, 9, 5, -3]), [-3, -2, 5, 9]);
-    assert.deepEqual(
-      tasks.sortByAsc([-2, 9, 5, -3, 15, 0]),
-      [-3, -2, 0, 5, 9, 15]
-    );
+    const min = -100;
+    const max = 100;
+    const length = 100;
+    for (let i = 0; i < 5; i += 1) {
+      const arr = utility.getRandomArrayUtil(min, max, length);
+      const sortedArr = arr.sort((a, b) => a - b);
+      assert.deepEqual(tasks.sortByAsc(arr), sortedArr);
+    }
     assert.equal(
       forbidden.isCommented(tasks.sortByAsc),
       false,
@@ -234,7 +285,7 @@ describe('core-js-conditions-n-loops', () => {
     );
   });
   it.optional(
-    'rotateMatrix should the original array rotated by an angle of 90 degrees clockwise',
+    'rotateMatrix should return the original array rotated by an angle of 90 degrees clockwise',
     () => {
       let arr = [
         [1, 2, 3],
@@ -247,19 +298,18 @@ describe('core-js-conditions-n-loops', () => {
         [9, 6, 3],
       ];
       assert.deepEqual(tasks.rotateMatrix(arr), result);
-
       const min = -10;
       const max = 10;
       const matrixSize = 5;
-
-      arr = [];
-      for (let i = 0; i < matrixSize; i += 1) {
-        const line = utility.getRandomArray(min, max, matrixSize);
-        arr.push(line);
+      for (let i = 0; i < 5; i += 1) {
+        arr = [];
+        for (let j = 0; j < matrixSize; j += 1) {
+          const line = utility.getRandomArrayUtil(min, max, matrixSize);
+          arr.push(line);
+        }
+        result = utility.getRotateMatrixUtil(arr);
+        assert.deepEqual(tasks.rotateMatrix(arr), result);
       }
-      result = utility.getRotateMatrix(arr);
-      assert.deepEqual(tasks.rotateMatrix(arr), result);
-
       assert.equal(
         forbidden.isCommented(tasks.rotateMatrix),
         false,
@@ -282,38 +332,71 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
-  it.optional('getBalanceIndex should return a sorted array', () => {
-    assert.equal(tasks.getBalanceIndex([1, 2, 5, 3, 0]), 2);
-    assert.equal(tasks.getBalanceIndex([2, 3, 9, 5]), 2);
-    assert.equal(tasks.getBalanceIndex([1, 2, 3, 4, 5]), -1);
-    assert.equal(tasks.getBalanceIndex([1, 1]), -1);
-    assert.equal(tasks.getBalanceIndex([1, 2, 3, 4, 5, 6, 7, 8, 9]), -1);
-    assert.equal(tasks.getBalanceIndex([]), -1);
-    for (let i = 0; i < 5; i += 1) {
-      const balanced = utility.getBalancedArray(9);
-      assert.equal(tasks.getBalanceIndex(balanced.arr), balanced.balanceIndex);
+  it.optional(
+    'getSpiralMatrix should return a matrix of size * size that is filled with numbers in ascending order',
+    () => {
+      let result = [
+        [1, 2, 3],
+        [8, 9, 4],
+        [7, 6, 5],
+      ];
+      assert.deepEqual(tasks.getSpiralMatrix(3), result);
+      for (let i = 0; i < 5; i += 1) {
+        const size = utility.getRandomNumberUtil(4, 15);
+        result = utility.getSpiralMatrixUtil(size);
+        assert.deepEqual(tasks.getSpiralMatrix(size), result);
+      }
+      assert.equal(
+        forbidden.isCommented(tasks.getSpiralMatrix),
+        false,
+        `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.getSpiralMatrix),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.getSpiralMatrix),
+        false,
+        `Using methods of String class is not allowed`
+      );
+      assert.equal(
+        forbidden.isUtilityUsed(tasks.getSpiralMatrix),
+        false,
+        `Using functions on utility.js file is not allowed`
+      );
     }
-    assert.equal(
-      forbidden.isCommented(tasks.getBalanceIndex),
-      false,
-      `Be sure to remove comments from the final solution`
-    );
-    assert.equal(
-      forbidden.isArrayUsed(tasks.getBalanceIndex),
-      false,
-      `Using methods of Array class is not allowed`
-    );
-  });
+  );
 });
 
 describe('core-js-conditions-n-loops optimal implementation', () => {
-  it.optional('optimal implementation of sortByAsc', function test() {
+  it.optional('speed test of sortByAsc', function test() {
     const min = -1000;
     const max = 1000;
-    const count = 10000;
-    const arr = utility.getRandomArray(min, max, count);
+    const length = 10000;
+    const arr = utility.getRandomArrayUtil(min, max, length);
     const sortedArr = arr.sort((a, b) => a - b);
     this.timeout(30);
     assert.deepEqual(tasks.sortByAsc(arr), sortedArr);
+  });
+  it.optional('speed test of rotateMatrix', function test() {
+    const min = -1000;
+    const max = 1000;
+    const matrixSize = 100;
+    const arr = [];
+    for (let j = 0; j < matrixSize; j += 1) {
+      const line = utility.getRandomArrayUtil(min, max, matrixSize);
+      arr.push(line);
+    }
+    const result = utility.getRotateMatrixUtil(arr);
+    this.timeout(5);
+    assert.deepEqual(tasks.rotateMatrix(arr), result);
+  });
+  it.optional('speed test of getSpiralMatrix', function test() {
+    const size = 100;
+    const result = utility.getSpiralMatrixUtil(size);
+    assert.deepEqual(tasks.getSpiralMatrix(size), result);
+    this.timeout(5);
   });
 });

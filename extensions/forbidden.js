@@ -119,8 +119,16 @@ function isStringUsed(fn) {
 }
 
 function isUtilityUsed(fn) {
-  // TODO необходима проверка не только названия, но и сравнения содержимого
-  return fn.toString().includes('utilityRotateMatrix');
+  const methods = [
+    'getRotateMatrixUtil',
+    'getBalanceIndexUtil',
+    'getRandomNumberUtil',
+    'getRandomArrayUtil',
+    'getBalancedArrayUtil',
+    'getSpiralMatrixUtil',
+  ];
+  const fnStr = fn.toString();
+  return methods.some((method) => fnStr.includes(method));
 }
 
 module.exports = {

@@ -44,6 +44,29 @@ function getMaxNumber(/* a, b, c */) {
 }
 
 /**
+ * Returns boolean value true if the queen can hit the king next move. If it cannot, false is returned.
+ * The size of the field is 8 * 8 cells.
+ * See more details at https://en.wikipedia.org/wiki/Queen_(chess)
+ *
+ * @typedef {{
+ *  x: number,
+ *  y: number
+ * }} Position
+ * @param {Position} queen
+ * @param {Position} king
+ * @return {boolean}
+ *
+ * @example:
+ * {x: 1, y: 1}, {x: 5, y: 5} => true
+ * {x: 2, y: 1}, {x: 2, y: 8} => true
+ * {x: 1, y: 1}, {x: 2, y: 8} => false
+ * {x: 1, y: 1}, {x: 2, y: 8} => false
+ */
+function isCheckmate(/* queen, king */) {
+  throw new Error('Not implemented');
+}
+
+/**
  * Returns boolean whether the triangle is isosceles.
  *
  * @param {number} a
@@ -135,7 +158,26 @@ function isContainNumber(/* num, digit */) {
 }
 
 /**
+ * Returns an index of element in the array of integers for which the sum
+ * of the elements to the left of it is equal to the sum of the elements on the right.
+ * If such an index does not return -1.
+ * In this task, the use of methods of the Array classes is not allowed.
+ *
+ * @param {number[]} arr
+ * @return {number}
+ *
+ * @example:
+ *  [1, 2, 5, 3, 0] => 2    => 1 + 2 === 3 + 0 then balance element is 5 and its index = 2
+ *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
+ *  [1, 2, 3, 4, 5] => -1   => no balance element
+ */
+function getBalanceIndex(/* arr */) {
+  throw new Error('Not implemented');
+}
+
+/**
  * Returns an ascending sorted array.
+ * Use any type of sorting.
  * In this task, the use of methods of the Array classes is not allowed.
  *
  * @param {number[]} arr
@@ -169,26 +211,35 @@ function rotateMatrix(/* arr */) {
 }
 
 /**
- * Returns an index of element in the array of integers for which the sum
- * of the elements to the left of it is equal to the sum of the elements on the right.
- * If such an index does not return -1.
- * In this task, the use of methods of the Array classes is not allowed.
+ * Returns a matrix of size * size that is filled with numbers in ascending order.
+ * Numbering of numbers should start from zero.
+ * The direction of filling with numbers is clockwise.
+ * In this task, the use of methods of the String and Array class is not allowed.
  *
- * @param {number[]} arr
- * @return {number}
+ * @param {number} size
+ * @return {number[][]}
  *
  * @example:
- *  [1, 2, 5, 3, 0] => 2    => 1 + 2 === 3 + 0 then balance element is 5 and its index = 2
- *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
- *  [1, 2, 3, 4, 5] => -1   => no balancing element
+ *        [
+ *          [1, 2, 3],
+ *  3  =>   [8, 9, 4],
+ *          [7, 6, 5]
+ *        ]
+ *        [
+ *          [1,  2,  3,  4],
+ *  4  =>   [12, 13, 14, 5],
+ *          [11, 16, 15, 6],
+ *          [10, 9,  8,  7]
+ *        ]
  */
-function getBalanceIndex(/* arr */) {
+function getSpiralMatrix(/* size */) {
   throw new Error('Not implemented');
 }
 
 module.exports = {
   isPositive,
   getMaxNumber,
+  isCheckmate,
   isIsoscelesTriangle,
   convertToRomanNumerals,
   isPalindrome,
@@ -197,4 +248,5 @@ module.exports = {
   sortByAsc,
   rotateMatrix,
   getBalanceIndex,
+  getSpiralMatrix,
 };
