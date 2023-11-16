@@ -106,6 +106,24 @@ function convertToRomanNumerals(/* number */) {
 }
 
 /**
+ * Returns the original number as a string with numbers replaced by words.
+ *
+ * @param {string} number
+ * @return {string}
+ *
+ * @example:
+ *  '1'       => 'one'
+ *  '10'      => 'one zero'
+ *  '-10'     => 'minus one zero'
+ *  '10.5'    => 'one zero point five'
+ *  '10,5'    => 'one zero point five'
+ *  '1950.2'  => 'one nine five zero point two'
+ */
+function convertNumberToString(/* number */) {
+  throw new Error('Not implemented');
+}
+
+/**
  * Returns a boolean value whether a string is palindrome.
  * In this task, the use of methods of the String and Array classes is not allowed.
  *
@@ -122,19 +140,20 @@ function isPalindrome(/* str */) {
 }
 
 /**
- * Returns the bool value whether the string contains the desired letter.
+ * Returns the index of the first occurrence of a letter in the string or -1 if there is no such letter.
  * In this task, the use of methods of the String and Array class is not allowed.
  *
  * @param {string} str
  * @param {string} letter
- * @return {boolean}
+ * @return {number}
  *
  * @example:
- *  'qwerty', 'q'     => true
- *  'qwerty', 'Q'     => false
- *  'qwerty', 'p'     => false
+ *  'qwerty', 'q'     => 0
+ *  'qwerty', 'е'     => 4
+ *  'qwerty', 'Q'     => -1
+ *  'qwerty', 'p'     => -1
  */
-function isContainLetter(/* str, letter */) {
+function getIndexOf(/* str, letter */) {
   throw new Error('Not implemented');
 }
 
@@ -193,6 +212,26 @@ function sortByAsc(/* arr */) {
 }
 
 /**
+ * Returns a string in which characters with an odd index are moved to the end of the string at each iteration.
+ * In this task, the use of methods of the Array classes is not allowed.
+ *
+ * @param {string} str
+ * @param {number} iteration
+ * @return {string}
+ *
+ * @example:
+ *  '012345', 1 => '024135'
+ *  'qwerty', 1 => 'qetwry'
+ *  '012345', 2 => '024135' => '043215'
+ *  'qwerty', 2 => 'qetwry' => 'qtrewy'
+ *  '012345', 3 => '024135' => '043215' => '031425'
+ *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
+ */
+function shuffleChar(/* str, iteration */) {
+  throw new Error('Not implemented');
+}
+
+/**
  * Returns the original array rotated by an angle of 90 degrees clockwise.
  * In this task, the use of methods of the String and Array class is not allowed.
  *
@@ -242,11 +281,13 @@ module.exports = {
   isCheckmate,
   isIsoscelesTriangle,
   convertToRomanNumerals,
+  convertNumberToString,
   isPalindrome,
-  isContainLetter,
+  getIndexOf,
   isContainNumber,
-  sortByAsc,
-  rotateMatrix,
   getBalanceIndex,
+  sortByAsc,
+  shuffleChar,
+  rotateMatrix,
   getSpiralMatrix,
 };

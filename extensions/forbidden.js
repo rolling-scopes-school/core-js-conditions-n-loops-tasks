@@ -126,6 +126,8 @@ function isUtilityUsed(fn) {
     'getRandomArrayUtil',
     'getBalancedArrayUtil',
     'getSpiralMatrixUtil',
+    'getNumberToStringUtil',
+    'getShuffleStringUtil',
   ];
   const fnStr = fn.toString();
   return methods.some((method) => fnStr.includes(method));

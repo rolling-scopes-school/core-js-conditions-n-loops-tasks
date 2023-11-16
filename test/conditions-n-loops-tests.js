@@ -119,6 +119,36 @@ describe('core-js-conditions-n-loops', () => {
     }
   );
   it.optional(
+    'convertNumberToString should the original number as a string with numbers replaced by words',
+    () => {
+      assert.equal(tasks.convertNumberToString('1'), 'one');
+      assert.equal(tasks.convertNumberToString('10'), 'one zero');
+      assert.equal(tasks.convertNumberToString('-10'), 'minus one zero');
+      assert.equal(tasks.convertNumberToString('10.5'), 'one zero point five');
+      assert.equal(
+        tasks.convertNumberToString('-10,5'),
+        'minus one zero point five'
+      );
+      assert.equal(
+        tasks.convertNumberToString('1950.2'),
+        'one nine five zero point two'
+      );
+      for (let i = 0; i < 5; i += 1) {
+        let number = '';
+        number += utility.getRandomNumberUtil(-10000, 10000);
+        number += i % 2 === 0 ? '.' : ',';
+        number += utility.getRandomNumberUtil(0, 5000);
+        const result = utility.getNumberToStringUtil(number);
+        assert.equal(tasks.convertNumberToString(number), result);
+      }
+      assert.equal(
+        forbidden.isCommented(tasks.convertNumberToString),
+        false,
+        `Be sure to remove comments from the final solution`
+      );
+    }
+  );
+  it.optional(
     'isPalindrome should return a boolean value whether a string is palindrome',
     () => {
       assert.equal(
@@ -259,6 +289,11 @@ describe('core-js-conditions-n-loops', () => {
         false,
         `Using methods of Array class is not allowed`
       );
+      assert.equal(
+        forbidden.isUtilityUsed(tasks.getBalanceIndex),
+        false,
+        `Using functions on utility.js file is not allowed`
+      );
     }
   );
   it.optional('sortByAsc should return a sorted array', () => {
@@ -283,7 +318,47 @@ describe('core-js-conditions-n-loops', () => {
       false,
       `Using methods of Array class is not allowed`
     );
+    assert.equal(
+      forbidden.isUtilityUsed(tasks.sortByAsc),
+      false,
+      `Using functions on utility.js file is not allowed`
+    );
   });
+  it.optional(
+    'shuffleChar should return a string in which characters with an odd index are moved to the end of the string at each iteration',
+    () => {
+      assert.equal(tasks.shuffleChar('012345', 1), '024135');
+      assert.equal(tasks.shuffleChar('012345', 2), '043215');
+      assert.equal(tasks.shuffleChar('012345', 3), '031425');
+      assert.equal(tasks.shuffleChar('qwerty', 1), 'qetwry');
+      assert.equal(tasks.shuffleChar('qwerty', 2), 'qtrewy');
+      assert.equal(tasks.shuffleChar('qwerty', 3), 'qrwtey');
+      const lenght = 100;
+      const iteration = 5;
+      let str = '';
+      for (let i = 0; i < lenght; i += 1) {
+        str += utility.getRandomNumberUtil(0, 9).toString();
+      }
+      const result = utility.getShuffleStringUtil(str, iteration);
+      assert.equal(tasks.shuffleChar(str, iteration), result);
+
+      // assert.equal(
+      //   forbidden.isCommented(tasks.shuffleChar),
+      //   false,
+      //   `Be sure to remove comments from the final solution`
+      // );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.shuffleChar),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isUtilityUsed(tasks.shuffleChar),
+        false,
+        `Using functions on utility.js file is not allowed`
+      );
+    }
+  );
   it.optional(
     'rotateMatrix should return the original array rotated by an angle of 90 degrees clockwise',
     () => {
@@ -371,6 +446,20 @@ describe('core-js-conditions-n-loops', () => {
 });
 
 describe('core-js-conditions-n-loops optimal implementation', () => {
+  it.optional(
+    'optimal implementation of convertNumberToString',
+    function test() {
+      const fnStr = tasks.convertNumberToString.toString();
+      if (!fnStr.includes('return')) {
+        this.skip();
+      }
+      assert.equal(
+        fnStr.includes('switch'),
+        true,
+        'You need to use a different method or operator, look for the appropriate method or operator in the documentation https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch'
+      );
+    }
+  );
   it.optional('speed test of sortByAsc', function test() {
     const min = -1000;
     const max = 1000;
@@ -392,6 +481,17 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     const result = utility.getRotateMatrixUtil(arr);
     this.timeout(5);
     assert.deepEqual(tasks.rotateMatrix(arr), result);
+  });
+  it.optional('speed test of shuffleChar', function test() {
+    const lenght = 1000;
+    const iteration = 1000;
+    let str = '';
+    for (let i = 0; i < lenght; i += 1) {
+      str += utility.getRandomNumberUtil(0, 9).toString();
+    }
+    const result = utility.getShuffleStringUtil(str, iteration);
+    this.timeout(20);
+    assert.equal(tasks.shuffleChar(str, iteration), result);
   });
   it.optional('speed test of getSpiralMatrix', function test() {
     const size = 100;
