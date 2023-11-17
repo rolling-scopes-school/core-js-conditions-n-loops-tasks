@@ -200,7 +200,7 @@ function getBalanceIndex(/* arr */) {
  * In this task, the use of methods of the Array classes is not allowed.
  *
  * @param {number[]} arr
- * @return {boolean}
+ * @return {number[]}
  *
  * @example:
  *  [2, 9, 5]       => [2, 5, 9]
@@ -235,8 +235,8 @@ function shuffleChar(/* str, iteration */) {
  * Returns the original array rotated by an angle of 90 degrees clockwise.
  * In this task, the use of methods of the String and Array class is not allowed.
  *
- * @param {number[]} arr
- * @return {boolean}
+ * @param {number[][]} arr
+ * @return {number[][]}
  *
  * @example:
  *  [                 [
