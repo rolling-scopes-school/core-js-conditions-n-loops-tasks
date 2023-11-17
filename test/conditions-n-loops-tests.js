@@ -496,7 +496,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
   it.optional('speed test of getSpiralMatrix', function test() {
     const size = 100;
     const result = utility.getSpiralMatrixUtil(size);
-    assert.deepEqual(tasks.getSpiralMatrix(size), result);
     this.timeout(5);
+    assert.deepEqual(tasks.getSpiralMatrix(size), result);
   });
 });
