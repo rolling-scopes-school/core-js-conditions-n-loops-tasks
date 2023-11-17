@@ -342,11 +342,11 @@ describe('core-js-conditions-n-loops', () => {
       const result = utility.getShuffleStringUtil(str, iteration);
       assert.equal(tasks.shuffleChar(str, iteration), result);
 
-      // assert.equal(
-      //   forbidden.isCommented(tasks.shuffleChar),
-      //   false,
-      //   `Be sure to remove comments from the final solution`
-      // );
+      assert.equal(
+        forbidden.isCommented(tasks.shuffleChar),
+        false,
+        `Be sure to remove comments from the final solution`
+      );
       assert.equal(
         forbidden.isArrayUsed(tasks.shuffleChar),
         false,
@@ -469,6 +469,17 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     this.timeout(30);
     assert.deepEqual(tasks.sortByAsc(arr), sortedArr);
   });
+  it.optional('speed test of shuffleChar', function test() {
+    const lenght = 1000;
+    const iteration = 1000;
+    let str = '';
+    for (let i = 0; i < lenght; i += 1) {
+      str += utility.getRandomNumberUtil(0, 9).toString();
+    }
+    const result = utility.getShuffleStringUtil(str, iteration);
+    this.timeout(30);
+    assert.equal(tasks.shuffleChar(str, iteration), result);
+  });
   it.optional('speed test of rotateMatrix', function test() {
     const min = -1000;
     const max = 1000;
@@ -481,17 +492,6 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     const result = utility.getRotateMatrixUtil(arr);
     this.timeout(5);
     assert.deepEqual(tasks.rotateMatrix(arr), result);
-  });
-  it.optional('speed test of shuffleChar', function test() {
-    const lenght = 1000;
-    const iteration = 1000;
-    let str = '';
-    for (let i = 0; i < lenght; i += 1) {
-      str += utility.getRandomNumberUtil(0, 9).toString();
-    }
-    const result = utility.getShuffleStringUtil(str, iteration);
-    this.timeout(20);
-    assert.equal(tasks.shuffleChar(str, iteration), result);
   });
   it.optional('speed test of getSpiralMatrix', function test() {
     const size = 100;
