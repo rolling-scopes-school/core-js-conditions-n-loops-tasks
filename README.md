@@ -20,23 +20,32 @@ The task is to implement functions on different Core JS topics. This module requ
 6. Each task is usually a regular function:
    ```javascript
    /**
-    * Returns the result of concatenation of two strings.
+    * Returns the maximum of three numbers.
+    * In this task, the use of methods of the Array class is not allowed.
     *
-    * @param {string} value1
-    * @param {string} value2
-    * @return {string}
+    * @param {number} a
+    * @param {number} b
+    * @param {number} c
+    * @return {number}
     *
-    * @example
-    *   'aa', 'bb' => 'aabb'
-    *   'aa',''    => 'aa'
-    *   '',  'bb'  => 'bb'
+    * @example:
+    *  1, 2, 3       => 3
+    *  -5, 0, 5      => 5
+    *  -0.1, 0, 0.2  => 0.2
     */
-   function concatenateStrings(value1, value2) {
+   function getMaxNumber(/* a, b, c */) {
      throw new Error('Not implemented');
    }
    ```
+
    Read the task description in the comment above the function. Try to understand the idea. You can see the tests prepared if you don't understand it.
 7. Write your code in `src/conditions-n-loops-tasks.js`.
+
+   Uncomment the incoming parameters:
+
+   ```javascript
+   function getMaxNumber(/* a, b, c */)
+   ```
 
    Remove the throwing error line from function body:
 
@@ -46,7 +55,7 @@ The task is to implement functions on different Core JS topics. This module requ
 
    Implement the function by any way and verify your solution by running tests until the failed test become passed (green).
 
-8. Run `npm test` in command line. If everything is OK you can try to resolve the next task.
+8. Save the solution and run `npm test` in command line. If everything is OK you can try to resolve the next task.
 
 ## Submit to [rs app](https://app.rs.school/)
 
@@ -64,8 +73,7 @@ The task is to implement functions on different Core JS topics. This module requ
 
 ## FAQ
 
-**Question:** I use Windows machine and have received a lot of errors like "Expected linebreaks to be 'LF' but found 'CRLF'". How to handle it?
-
+**Question:** I use Windows machine and have received a lot of errors like "Expected linebreaks to be 'LF' but found 'CRLF'". How to handle it?<br>
 **Answer**:
 
 - First, you need to install Gitbash properly: you need to choose option "Checkout as-is, commit as-is" in section "Configuring the line ending conversions". It'll let you download repos with line endings set "as-is" as well as commit. In other words, not to change them at all, because by default it converts them.
@@ -79,6 +87,12 @@ The task is to implement functions on different Core JS topics. This module requ
 ```
 $ npm run lint:fix
 ```
+
+**Question:** Execution of tests "hangs" on one of them and does not display the result. What to do?<br>
+**Answer**: Check your solution for an infinite loop, fix it, and rerun the test.
+
+**Question:** The solution in the local repository succeeds and all tests are "green", but in the application some tests don't count. What to do?<br>
+**Answer**: [Update your repository fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork), update the local repository from the fork, run tests and fix your solution. After fixing, resubmit your solution for testing.
 
 ---
 
