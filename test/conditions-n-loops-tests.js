@@ -18,6 +18,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional('getMaxNumber should return the maximum of three numbers', () => {
     assert.equal(tasks.getMaxNumber(-5, 5, 1), 5);
     assert.equal(tasks.getMaxNumber(5, 5, 5), 5);
@@ -34,24 +35,62 @@ describe('core-js-conditions-n-loops', () => {
       `Using methods of Array class is not allowed`
     );
   });
-  it.optional('isCheckmate should return the maximum of three numbers', () => {
-    assert.equal(tasks.isCheckmate({ x: 1, y: 1 }, { x: 5, y: 5 }), true);
-    assert.equal(tasks.isCheckmate({ x: 2, y: 1 }, { x: 2, y: 8 }), true);
-    assert.equal(tasks.isCheckmate({ x: 1, y: 1 }, { x: 2, y: 8 }), false);
-    assert.equal(tasks.isCheckmate({ x: 1, y: 1 }, { x: 2, y: 8 }), false);
-    assert.equal(tasks.isCheckmate({ x: 3, y: 3 }, { x: 1, y: 2 }), false);
-    assert.equal(tasks.isCheckmate({ x: 2, y: 5 }, { x: 6, y: 2 }), false);
-    assert.equal(tasks.isCheckmate({ x: 3, y: 4 }, { x: 5, y: 4 }), true);
-    assert.equal(tasks.isCheckmate({ x: 5, y: 3 }, { x: 4, y: 6 }), false);
-    assert.equal(tasks.isCheckmate({ x: 6, y: 4 }, { x: 3, y: 7 }), true);
-    assert.equal(tasks.isCheckmate({ x: 8, y: 7 }, { x: 2, y: 4 }), false);
-    assert.equal(tasks.isCheckmate({ x: 3, y: 5 }, { x: 8, y: 4 }), false);
-    assert.equal(
-      forbidden.isCommented(tasks.getMaxNumber),
-      false,
-      `Be sure to remove comments from the final solution`
-    );
-  });
+
+  it.optional(
+    'canQueenCaptureKing should return the maximum of three numbers',
+    () => {
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 1, y: 1 }, { x: 5, y: 5 }),
+        true
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 2, y: 1 }, { x: 2, y: 8 }),
+        true
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 1, y: 1 }, { x: 2, y: 8 }),
+        false
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 1, y: 1 }, { x: 2, y: 8 }),
+        false
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 3, y: 3 }, { x: 1, y: 2 }),
+        false
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 2, y: 5 }, { x: 6, y: 2 }),
+        false
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 3, y: 4 }, { x: 5, y: 4 }),
+        true
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 5, y: 3 }, { x: 4, y: 6 }),
+        false
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 6, y: 4 }, { x: 3, y: 7 }),
+        true
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 8, y: 7 }, { x: 2, y: 4 }),
+        false
+      );
+      assert.equal(
+        tasks.canQueenCaptureKing({ x: 3, y: 5 }, { x: 8, y: 4 }),
+        false
+      );
+      assert.equal(
+        forbidden.isCommented(tasks.getMaxNumber),
+        false,
+        `Be sure to remove comments from the final solution`
+      );
+    }
+  );
+
   it.optional(
     'isIsoscelesTriangle should return boolean whether the triangle is isosceles',
     () => {
@@ -97,6 +136,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional(
     'convertToRomanNumerals should return the number converted to Roman numerals',
     () => {
@@ -118,6 +158,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional(
     'convertNumberToString should the original number as a string with numbers replaced by words',
     () => {
@@ -148,6 +189,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional(
     'isPalindrome should return a boolean value whether a string is palindrome',
     () => {
@@ -193,6 +235,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional(
     'getIndexOf should return a bool value if the string contains the desired letter',
     () => {
@@ -217,6 +260,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional(
     'isContainNumber should bool value whether the number contains the desired digit',
     () => {
@@ -262,6 +306,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional(
     'getBalanceIndex should returns the index of the balancer element',
     () => {
@@ -296,6 +341,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional('sortByAsc should return a sorted array', () => {
     assert.deepEqual(tasks.sortByAsc([2, 9, 5]), [2, 5, 9]);
     assert.deepEqual(tasks.sortByAsc([2, 9, 5, 9]), [2, 5, 9, 9]);
@@ -324,6 +370,7 @@ describe('core-js-conditions-n-loops', () => {
       `Using functions on utility.js file is not allowed`
     );
   });
+
   it.optional(
     'shuffleChar should return a string in which characters with an odd index are moved to the end of the string at each iteration',
     () => {
@@ -359,6 +406,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional(
     'rotateMatrix should return the original array rotated by an angle of 90 degrees clockwise',
     () => {
@@ -407,6 +455,7 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
   it.optional(
     'getSpiralMatrix should return a matrix of size * size that is filled with numbers in ascending order',
     () => {
@@ -460,6 +509,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
       );
     }
   );
+
   it.optional('speed test of sortByAsc', function test() {
     const min = -1000;
     const max = 1000;
@@ -469,6 +519,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     this.timeout(30);
     assert.deepEqual(tasks.sortByAsc(arr), sortedArr);
   });
+
   it.optional('speed test of shuffleChar', function test() {
     const lenght = 1000;
     const iteration = 1000;
@@ -480,6 +531,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     this.timeout(30);
     assert.equal(tasks.shuffleChar(str, iteration), result);
   });
+
   it.optional('speed test of rotateMatrix', function test() {
     const min = -1000;
     const max = 1000;
@@ -493,6 +545,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     this.timeout(5);
     assert.deepEqual(tasks.rotateMatrix(arr), result);
   });
+
   it.optional('speed test of getSpiralMatrix', function test() {
     const size = 100;
     const result = utility.getSpiralMatrixUtil(size);
