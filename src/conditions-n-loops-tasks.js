@@ -44,7 +44,8 @@ function getMaxNumber(/* a, b, c */) {
 
 /**
  * Checks if a queen can capture a king in the next move on an 8x8 chessboard.
- *  * See more details at https://en.wikipedia.org/wiki/Queen_(chess)
+ * See more details at https://en.wikipedia.org/wiki/Queen_(chess)
+ *
  * @typedef {{
  *  x: number,
  *  y: number
@@ -66,9 +67,9 @@ function canQueenCaptureKing(/* queen, king */) {
 /**
  * Determines whether a triangle is isosceles based on its side lengths.
  *
- * @param {number} a - Length of the first side.
- * @param {number} b - Length of the second side.
- * @param {number} c - Length of the third side.
+ * @param {number} a - The length of the first side.
+ * @param {number} b - The length of the second side.
+ * @param {number} c - The length of the third side.
  * @return {boolean} True if the triangle is isosceles, false otherwise.
  *
  * @example:
@@ -137,7 +138,7 @@ function isPalindrome(/* str */) {
 
 /**
  * Finds the first occurrence of a letter in a string.
- * In this task, the use of methods of the String and Array class is not allowed.
+ * In this task, the use of methods of the String and Array classes is not allowed.
  *
  * @param {string} str - The string to search.
  * @param {string} letter - The letter to find.
@@ -175,7 +176,7 @@ function isContainNumber(/* num, digit */) {
 /**
  * Finds the index of an element in an array where the sum of elements to the left equals the sum of elements to the right.
  * If such an index does not return -1.
- * In this task, the use of methods of the Array classes is not allowed.
+ * In this task, the use of methods of the Array class is not allowed.
  *
  * @param {number[]} arr - The array to check.
  * @return {number} The index of the balance point, or -1 if none exists.
@@ -192,9 +193,7 @@ function getBalanceIndex(/* arr */) {
 /**
  * Sorts an array of numbers in ascending order.
  * Employ any sorting algorithm of your choice.
-
- * In this task, the use of methods of the Array classes is not allowed.
-
+ * In this task, the use of methods of the Array class is not allowed.
  *
  * @param {number[]} arr - The array to sort.
  * @return {number[]} The sorted array.
@@ -209,7 +208,7 @@ function sortByAsc(/* arr */) {
 }
 
 /**
- * Shuffles characters in a string such that characters with an odd index are moved to the end of the string at each iteration.
+ * Shuffles characters in a string so that the characters with an odd index are moved to the end of the string at each iteration.
  * Usage of Array class methods is not allowed in this task.
  *
  * @param {string} str - The string to shuffle.
@@ -248,7 +247,8 @@ function rotateMatrix(/* matrix */) {
 
 /**
  * Generates a spiral matrix of a given size, filled with numbers in ascending order starting from zero.
- * The direction of filling with numbers is clockwise. Usage of String and Array classes methods is not allowed in this task.
+ * The direction of filling with numbers is clockwise.
+ * Usage of String and Array classes methods is not allowed in this task.
  *
  * @param {number} size - The size of the matrix.
  * @return {number[][]} The spiral matrix.
