@@ -10,11 +10,11 @@
  ******************************************************************************************* */
 
 /**
- * Returns a boolean value whether a number is positive. Relate zero to positive numbers.
- * In this task, the use of methods of the Number and Math classes is not allowed.
+ * Determines whether a given number is positive. Zero is considered positive.
+ * This function does not use Number or Math class methods.
  *
- * @param {number} number
- * @return {boolean}
+ * @param {number} number - The number to check.
+ * @return {boolean} True if the number is positive or zero, false otherwise.
  *
  * @example:
  *  10 => true
@@ -26,13 +26,12 @@ function isPositive(/* number */) {
 }
 
 /**
- * Returns the maximum of three numbers.
- * In this task, the use of methods of the Array class is not allowed.
+ * Returns the maximum of three numbers without using Array class methods.
  *
- * @param {number} a
- * @param {number} b
- * @param {number} c
- * @return {number}
+ * @param {number} a - The first number.
+ * @param {number} b - The second number.
+ * @param {number} c - The third number.
+ * @return {number} The maximum of the three numbers.
  *
  * @example:
  *  1, 2, 3       => 3
@@ -44,35 +43,33 @@ function getMaxNumber(/* a, b, c */) {
 }
 
 /**
- * Returns boolean value true if the queen can hit the king next move. If it cannot, false is returned.
- * The size of the field is 8 * 8 cells.
- * See more details at https://en.wikipedia.org/wiki/Queen_(chess)
- *
+ * Checks if a queen can capture a king in the next move on an 8x8 chessboard.
+ *  * See more details at https://en.wikipedia.org/wiki/Queen_(chess)
  * @typedef {{
  *  x: number,
  *  y: number
  * }} Position
- * @param {Position} queen
- * @param {Position} king
- * @return {boolean}
+ * @param {Object} queen - The position of the queen.
+ * @param {Object} king - The position of the king.
+ * @return {boolean} True if the queen can capture the king, false otherwise.
  *
- * @example:
+ * @example
  * {x: 1, y: 1}, {x: 5, y: 5} => true
  * {x: 2, y: 1}, {x: 2, y: 8} => true
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function isCheckmate(/* queen, king */) {
+function canQueenCaptureKing(/* queen, king */) {
   throw new Error('Not implemented');
 }
 
 /**
- * Returns boolean whether the triangle is isosceles.
+ * Determines whether a triangle is isosceles based on its side lengths.
  *
- * @param {number} a
- * @param {number} b
- * @param {number} c
- * @return {boolean}
+ * @param {number} a - Length of the first side.
+ * @param {number} b - Length of the second side.
+ * @param {number} c - Length of the third side.
+ * @return {boolean} True if the triangle is isosceles, false otherwise.
  *
  * @example:
  *  1, 2, 3   => false
@@ -88,11 +85,10 @@ function isIsoscelesTriangle(/* a, b, c */) {
 }
 
 /**
- * Returns the number converted to Roman numerals.
- * The initial number will always be greater than zero and less than 40.
+ * Converts a number to Roman numerals. The number will be between 1 and 39.
  *
- * @param {number} num
- * @return {string}
+ * @param {number} num - The number to convert.
+ * @return {string} The Roman numeral representation of the number.
  *
  * @example:
  *  1   => I
@@ -101,15 +97,15 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* number */) {
+function convertToRomanNumerals(/* num */) {
   throw new Error('Not implemented');
 }
 
 /**
- * Returns the original number as a string with numbers replaced by words.
+ * Converts a number to a string, replacing digits with words.
  *
- * @param {string} number
- * @return {string}
+ * @param {string} numberStr - The number as a string.
+ * @return {string} The number with digits replaced by words.
  *
  * @example:
  *  '1'       => 'one'
@@ -119,16 +115,16 @@ function convertToRomanNumerals(/* number */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* number */) {
+function convertNumberToString(/* numberStr */) {
   throw new Error('Not implemented');
 }
 
 /**
- * Returns a boolean value whether a string is palindrome.
+ * Determines whether a string is a palindrome.
  * In this task, the use of methods of the String and Array classes is not allowed.
  *
- * @param {string} str
- * @return {boolean}
+ * @param {string} str - The string to check.
+ * @return {boolean} True if the string is a palindrome, false otherwise.
  *
  * @example:
  *  'abcba'     => true
@@ -140,12 +136,12 @@ function isPalindrome(/* str */) {
 }
 
 /**
- * Returns the index of the first occurrence of a letter in the string or -1 if there is no such letter.
+ * Finds the first occurrence of a letter in a string.
  * In this task, the use of methods of the String and Array class is not allowed.
  *
- * @param {string} str
- * @param {string} letter
- * @return {number}
+ * @param {string} str - The string to search.
+ * @param {string} letter - The letter to find.
+ * @return {number} The index of the first occurrence of the letter, or -1 if not found.
  *
  * @example:
  *  'qwerty', 'q'     => 0
@@ -158,12 +154,12 @@ function getIndexOf(/* str, letter */) {
 }
 
 /**
- * Returns the bool value whether the number contains the desired digit.
- * In this task, the use of methods of the String and Array class is not allowed.
+ * Checks if a number contains a specific digit.
+ * In this task, the use of methods of the String and Array classes is not allowed.
  *
- * @param {number} num
- * @param {number} digit
- * @return {boolean}
+ * @param {number} num - The number to check.
+ * @param {number} digit - The digit to search for.
+ * @return {boolean} True if the number contains the digit, false otherwise.
  *
  * @example:
  *  123450, 5   => true
@@ -177,13 +173,12 @@ function isContainNumber(/* num, digit */) {
 }
 
 /**
- * Returns an index of element in the array of integers for which the sum
- * of the elements to the left of it is equal to the sum of the elements on the right.
+ * Finds the index of an element in an array where the sum of elements to the left equals the sum of elements to the right.
  * If such an index does not return -1.
  * In this task, the use of methods of the Array classes is not allowed.
  *
- * @param {number[]} arr
- * @return {number}
+ * @param {number[]} arr - The array to check.
+ * @return {number} The index of the balance point, or -1 if none exists.
  *
  * @example:
  *  [1, 2, 5, 3, 0] => 2    => 1 + 2 === 3 + 0 then balance element is 5 and its index = 2
@@ -195,12 +190,14 @@ function getBalanceIndex(/* arr */) {
 }
 
 /**
- * Returns an ascending sorted array.
- * Use any type of sorting.
+ * Sorts an array of numbers in ascending order.
+ * Employ any sorting algorithm of your choice.
+
  * In this task, the use of methods of the Array classes is not allowed.
+
  *
- * @param {number[]} arr
- * @return {number[]}
+ * @param {number[]} arr - The array to sort.
+ * @return {number[]} The sorted array.
  *
  * @example:
  *  [2, 9, 5]       => [2, 5, 9]
@@ -212,12 +209,12 @@ function sortByAsc(/* arr */) {
 }
 
 /**
- * Returns a string in which characters with an odd index are moved to the end of the string at each iteration.
- * In this task, the use of methods of the Array classes is not allowed.
+ * Shuffles characters in a string such that characters with an odd index are moved to the end of the string at each iteration.
+ * Usage of Array class methods is not allowed in this task.
  *
- * @param {string} str
- * @param {number} iteration
- * @return {string}
+ * @param {string} str - The string to shuffle.
+ * @param {number} iterations - The number of iterations to perform the shuffle.
+ * @return {string} The shuffled string.
  *
  * @example:
  *  '012345', 1 => '024135'
@@ -227,16 +224,16 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iteration */) {
+function shuffleChar(/* str, iterations */) {
   throw new Error('Not implemented');
 }
 
 /**
- * Returns the original array rotated by an angle of 90 degrees clockwise.
- * In this task, the use of methods of the String and Array class is not allowed.
+ * Rotates a matrix by 90 degrees clockwise.
+ * Usage of String and Array class methods is not allowed in this task.
  *
- * @param {number[][]} arr
- * @return {number[][]}
+ * @param {number[][]} matrix - The matrix to rotate.
+ * @return {number[][]} The rotated matrix.
  *
  * @example:
  *  [                 [
@@ -245,18 +242,16 @@ function shuffleChar(/* str, iteration */) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-function rotateMatrix(/* arr */) {
+function rotateMatrix(/* matrix */) {
   throw new Error('Not implemented');
 }
 
 /**
- * Returns a matrix of size * size that is filled with numbers in ascending order.
- * Numbering of numbers should start from zero.
- * The direction of filling with numbers is clockwise.
- * In this task, the use of methods of the String and Array class is not allowed.
+ * Generates a spiral matrix of a given size, filled with numbers in ascending order starting from zero.
+ * The direction of filling with numbers is clockwise. Usage of String and Array classes methods is not allowed in this task.
  *
- * @param {number} size
- * @return {number[][]}
+ * @param {number} size - The size of the matrix.
+ * @return {number[][]} The spiral matrix.
  *
  * @example:
  *        [
@@ -278,7 +273,7 @@ function getSpiralMatrix(/* size */) {
 module.exports = {
   isPositive,
   getMaxNumber,
-  isCheckmate,
+  canQueenCaptureKing,
   isIsoscelesTriangle,
   convertToRomanNumerals,
   convertNumberToString,
