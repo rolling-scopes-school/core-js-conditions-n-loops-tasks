@@ -193,7 +193,7 @@ function getBalanceIndex(/* arr */) {
 /**
  * Sorts an array of numbers in ascending order.
  * Employ any sorting algorithm of your choice.
- * In this task, the use of methods of the Array class is not allowed.
+ * In this task, the use of methods of the Array and String classes is not allowed.
  *
  * @param {number[]} arr - The array to sort.
  * @return {number[]} The sorted array.

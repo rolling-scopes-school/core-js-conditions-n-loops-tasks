@@ -365,6 +365,11 @@ describe('core-js-conditions-n-loops', () => {
       `Using methods of Array class is not allowed`
     );
     assert.equal(
+      forbidden.isStringUsed(tasks.sortByAsc),
+      false,
+      `Using methods of String class is not allowed`
+    );
+    assert.equal(
       forbidden.isUtilityUsed(tasks.sortByAsc),
       false,
       `Using functions on utility.js file is not allowed`
