@@ -521,6 +521,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     const length = 10000;
     const arr = utility.getRandomArrayUtil(min, max, length);
     const sortedArr = arr.sort((a, b) => a - b);
+    this.slow(20);
     this.timeout(30);
     assert.deepEqual(tasks.sortByAsc(arr), sortedArr);
   });
@@ -533,6 +534,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
       str += utility.getRandomNumberUtil(0, 9).toString();
     }
     const result = utility.getShuffleStringUtil(str, iteration);
+    this.slow(20);
     this.timeout(30);
     assert.equal(tasks.shuffleChar(str, iteration), result);
   });
@@ -547,6 +549,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
       arr.push(line);
     }
     const result = utility.getRotateMatrixUtil(arr);
+    this.slow(4);
     this.timeout(5);
     assert.deepEqual(tasks.rotateMatrix(arr), result);
   });
@@ -554,6 +557,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
   it.optional('speed test of getSpiralMatrix', function test() {
     const size = 100;
     const result = utility.getSpiralMatrixUtil(size);
+    this.slow(4);
     this.timeout(5);
     assert.deepEqual(tasks.getSpiralMatrix(size), result);
   });
