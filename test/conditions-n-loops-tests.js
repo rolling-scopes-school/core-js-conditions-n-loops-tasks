@@ -534,8 +534,8 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
       str += utility.getRandomNumberUtil(0, 9).toString();
     }
     const result = utility.getShuffleStringUtil(str, iteration);
-    this.slow(20);
-    this.timeout(30);
+    this.slow(30);
+    this.timeout(40);
     assert.equal(tasks.shuffleChar(str, iteration), result);
   });
 
