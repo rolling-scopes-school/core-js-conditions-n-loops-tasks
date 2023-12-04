@@ -37,7 +37,7 @@ describe('core-js-conditions-n-loops', () => {
   });
 
   it.optional(
-    'canQueenCaptureKing should return the maximum of three numbers',
+    'canQueenCaptureKing should return true if a queen can capture a king',
     () => {
       assert.equal(
         tasks.canQueenCaptureKing({ x: 1, y: 1 }, { x: 5, y: 5 }),
@@ -342,17 +342,53 @@ describe('core-js-conditions-n-loops', () => {
     }
   );
 
+  it.optional(
+    'getSpiralMatrix should return a matrix of size * size that is filled with numbers in ascending order',
+    () => {
+      let result = [
+        [1, 2, 3],
+        [8, 9, 4],
+        [7, 6, 5],
+      ];
+      assert.deepEqual(tasks.getSpiralMatrix(3), result);
+      for (let i = 0; i < 5; i += 1) {
+        const size = utility.getRandomNumberUtil(4, 10);
+        result = utility.getSpiralMatrixUtil(size);
+        assert.deepEqual(tasks.getSpiralMatrix(size), result);
+      }
+      assert.equal(
+        forbidden.isCommented(tasks.getSpiralMatrix),
+        false,
+        `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.getSpiralMatrix),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.getSpiralMatrix),
+        false,
+        `Using methods of String class is not allowed`
+      );
+      assert.equal(
+        forbidden.isUtilityUsed(tasks.getSpiralMatrix),
+        false,
+        `Using functions on utility.js file is not allowed`
+      );
+    }
+  );
+
   it.optional('sortByAsc should return a sorted array', () => {
-    assert.deepEqual(tasks.sortByAsc([2, 9, 5]), [2, 5, 9]);
-    assert.deepEqual(tasks.sortByAsc([2, 9, 5, 9]), [2, 5, 9, 9]);
-    assert.deepEqual(tasks.sortByAsc([-2, 9, 5, -3]), [-3, -2, 5, 9]);
     const min = -100;
     const max = 100;
-    const length = 100;
+    const length = 10;
     for (let i = 0; i < 5; i += 1) {
       const arr = utility.getRandomArrayUtil(min, max, length);
+      const sourceArray = Array.from(arr);
       const sortedArr = arr.sort((a, b) => a - b);
-      assert.deepEqual(tasks.sortByAsc(arr), sortedArr);
+      tasks.sortByAsc(sourceArray);
+      assert.deepEqual(sourceArray, sortedArr);
     }
     assert.equal(
       forbidden.isCommented(tasks.sortByAsc),
@@ -425,7 +461,8 @@ describe('core-js-conditions-n-loops', () => {
         [8, 5, 2],
         [9, 6, 3],
       ];
-      assert.deepEqual(tasks.rotateMatrix(arr), result);
+      tasks.rotateMatrix(arr);
+      assert.deepEqual(arr, result);
       const min = -10;
       const max = 10;
       const matrixSize = 5;
@@ -436,7 +473,8 @@ describe('core-js-conditions-n-loops', () => {
           arr.push(line);
         }
         result = utility.getRotateMatrixUtil(arr);
-        assert.deepEqual(tasks.rotateMatrix(arr), result);
+        tasks.rotateMatrix(arr);
+        assert.deepEqual(arr, result);
       }
       assert.equal(
         forbidden.isCommented(tasks.rotateMatrix),
@@ -460,46 +498,42 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
-
-  it.optional(
-    'getSpiralMatrix should return a matrix of size * size that is filled with numbers in ascending order',
-    () => {
-      let result = [
-        [1, 2, 3],
-        [8, 9, 4],
-        [7, 6, 5],
-      ];
-      assert.deepEqual(tasks.getSpiralMatrix(3), result);
-      for (let i = 0; i < 5; i += 1) {
-        const size = utility.getRandomNumberUtil(4, 15);
-        result = utility.getSpiralMatrixUtil(size);
-        assert.deepEqual(tasks.getSpiralMatrix(size), result);
-      }
-      assert.equal(
-        forbidden.isCommented(tasks.getSpiralMatrix),
-        false,
-        `Be sure to remove comments from the final solution`
-      );
-      assert.equal(
-        forbidden.isArrayUsed(tasks.getSpiralMatrix),
-        false,
-        `Using methods of Array class is not allowed`
-      );
-      assert.equal(
-        forbidden.isStringUsed(tasks.getSpiralMatrix),
-        false,
-        `Using methods of String class is not allowed`
-      );
-      assert.equal(
-        forbidden.isUtilityUsed(tasks.getSpiralMatrix),
-        false,
-        `Using functions on utility.js file is not allowed`
-      );
-    }
-  );
 });
 
 describe('core-js-conditions-n-loops optimal implementation', () => {
+  let sortedArr = [];
+  let notSortedArr = [];
+  const iteration = 1000;
+  let suffledString = '';
+  let notSuffledString = '';
+  let rotatedMatrix = [];
+  const notRotatedMatrix = [];
+
+  before(function () {
+    // prepare data for sortByAsc speed test
+    const min = -1000;
+    const max = 1000;
+    const length = 15000;
+    const arr = utility.getRandomArrayUtil(min, max, length);
+    notSortedArr = Array.from(arr);
+    sortedArr = arr.sort((a, b) => a - b);
+
+    // prepare data for shuffleChar speed test
+    const lenght = 1000;
+    for (let i = 0; i < lenght; i += 1) {
+      notSuffledString += utility.getRandomNumberUtil(0, 9).toString();
+    }
+    suffledString = utility.getShuffleStringUtil(notSuffledString, iteration);
+
+    // prepare data for rotateMatrix speed test
+    const matrixSize = 2500;
+    for (let j = 0; j < matrixSize; j += 1) {
+      const line = utility.getRandomArrayUtil(min, max, matrixSize);
+      notRotatedMatrix.push(line);
+    }
+    rotatedMatrix = utility.getRotateMatrixUtil(notRotatedMatrix);
+  });
+
   it.optional(
     'optimal implementation of convertNumberToString',
     function test() {
@@ -516,49 +550,22 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
   );
 
   it.optional('speed test of sortByAsc', function test() {
-    const min = -1000;
-    const max = 1000;
-    const length = 10000;
-    const arr = utility.getRandomArrayUtil(min, max, length);
-    const sortedArr = arr.sort((a, b) => a - b);
-    this.slow(20);
-    this.timeout(30);
-    assert.deepEqual(tasks.sortByAsc(arr), sortedArr);
+    this.slow(60);
+    this.timeout(65);
+    tasks.sortByAsc(notSortedArr);
+    assert.deepEqual(notSortedArr, sortedArr);
   });
 
   it.optional('speed test of shuffleChar', function test() {
-    const lenght = 1000;
-    const iteration = 1000;
-    let str = '';
-    for (let i = 0; i < lenght; i += 1) {
-      str += utility.getRandomNumberUtil(0, 9).toString();
-    }
-    const result = utility.getShuffleStringUtil(str, iteration);
     this.slow(20);
     this.timeout(30);
-    assert.equal(tasks.shuffleChar(str, iteration), result);
+    assert.equal(tasks.shuffleChar(notSuffledString, iteration), suffledString);
   });
 
   it.optional('speed test of rotateMatrix', function test() {
-    const min = -1000;
-    const max = 1000;
-    const matrixSize = 100;
-    const arr = [];
-    for (let j = 0; j < matrixSize; j += 1) {
-      const line = utility.getRandomArrayUtil(min, max, matrixSize);
-      arr.push(line);
-    }
-    const result = utility.getRotateMatrixUtil(arr);
-    this.slow(4);
-    this.timeout(5);
-    assert.deepEqual(tasks.rotateMatrix(arr), result);
-  });
-
-  it.optional('speed test of getSpiralMatrix', function test() {
-    const size = 100;
-    const result = utility.getSpiralMatrixUtil(size);
-    this.slow(4);
-    this.timeout(5);
-    assert.deepEqual(tasks.getSpiralMatrix(size), result);
+    this.slow(240);
+    this.timeout(250);
+    tasks.rotateMatrix(notRotatedMatrix);
+    assert.deepEqual(notRotatedMatrix, rotatedMatrix);
   });
 });
