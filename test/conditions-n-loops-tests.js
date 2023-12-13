@@ -509,28 +509,30 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
   let rotatedMatrix = [];
   const notRotatedMatrix = [];
 
-  // prepare data for sortByAsc speed test
-  const min = -1000;
-  const max = 1000;
-  const length = 15000;
-  const arr = utility.getRandomArrayUtil(min, max, length);
-  notSortedArr = Array.from(arr);
-  sortedArr = arr.sort((a, b) => a - b);
+  before(function () {
+    // prepare data for sortByAsc speed test
+    const min = -1000;
+    const max = 1000;
+    const length = 15000;
+    const arr = utility.getRandomArrayUtil(min, max, length);
+    notSortedArr = Array.from(arr);
+    sortedArr = arr.sort((a, b) => a - b);
 
-  // prepare data for shuffleChar speed test
-  const lenght = 1000;
-  for (let i = 0; i < lenght; i += 1) {
-    notSuffledString += utility.getRandomNumberUtil(0, 9).toString();
-  }
-  suffledString = utility.getShuffleStringUtil(notSuffledString, iteration);
+    // prepare data for shuffleChar speed test
+    const lenght = 1000;
+    for (let i = 0; i < lenght; i += 1) {
+      notSuffledString += utility.getRandomNumberUtil(0, 9).toString();
+    }
+    suffledString = utility.getShuffleStringUtil(notSuffledString, iteration);
 
-  // prepare data for rotateMatrix speed test
-  const matrixSize = 2500;
-  for (let j = 0; j < matrixSize; j += 1) {
-    const line = utility.getRandomArrayUtil(min, max, matrixSize);
-    notRotatedMatrix.push(line);
-  }
-  rotatedMatrix = utility.getRotateMatrixUtil(notRotatedMatrix);
+    // prepare data for rotateMatrix speed test
+    const matrixSize = 2500;
+    for (let j = 0; j < matrixSize; j += 1) {
+      const line = utility.getRandomArrayUtil(min, max, matrixSize);
+      notRotatedMatrix.push(line);
+    }
+    rotatedMatrix = utility.getRotateMatrixUtil(notRotatedMatrix);
+  });
 
   it.optional(
     'optimal implementation of convertNumberToString',
