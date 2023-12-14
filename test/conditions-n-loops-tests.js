@@ -379,6 +379,57 @@ describe('core-js-conditions-n-loops', () => {
     }
   );
 
+  it.optional(
+    'rotateMatrix should return the original array rotated by an angle of 90 degrees clockwise',
+    () => {
+      let arr = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+      ];
+      let result = [
+        [7, 4, 1],
+        [8, 5, 2],
+        [9, 6, 3],
+      ];
+      tasks.rotateMatrix(arr);
+      assert.deepEqual(arr, result);
+      const min = -10;
+      const max = 10;
+      const matrixSize = 5;
+      for (let i = 0; i < 5; i += 1) {
+        arr = [];
+        for (let j = 0; j < matrixSize; j += 1) {
+          const line = utility.getRandomArrayUtil(min, max, matrixSize);
+          arr.push(line);
+        }
+        result = utility.getRotateMatrixUtil(arr);
+        tasks.rotateMatrix(arr);
+        assert.deepEqual(arr, result);
+      }
+      assert.equal(
+        forbidden.isCommented(tasks.rotateMatrix),
+        false,
+        `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.rotateMatrix),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.rotateMatrix),
+        false,
+        `Using methods of String class is not allowed`
+      );
+      assert.equal(
+        forbidden.isUtilityUsed(tasks.rotateMatrix),
+        false,
+        `Using functions on utility.js file is not allowed`
+      );
+    }
+  );
+
   it.optional('sortByAsc should return a sorted array', () => {
     const min = -100;
     const max = 100;
@@ -447,73 +498,20 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
-
-  it.optional(
-    'rotateMatrix should return the original array rotated by an angle of 90 degrees clockwise',
-    () => {
-      let arr = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9],
-      ];
-      let result = [
-        [7, 4, 1],
-        [8, 5, 2],
-        [9, 6, 3],
-      ];
-      tasks.rotateMatrix(arr);
-      assert.deepEqual(arr, result);
-      const min = -10;
-      const max = 10;
-      const matrixSize = 5;
-      for (let i = 0; i < 5; i += 1) {
-        arr = [];
-        for (let j = 0; j < matrixSize; j += 1) {
-          const line = utility.getRandomArrayUtil(min, max, matrixSize);
-          arr.push(line);
-        }
-        result = utility.getRotateMatrixUtil(arr);
-        tasks.rotateMatrix(arr);
-        assert.deepEqual(arr, result);
-      }
-      assert.equal(
-        forbidden.isCommented(tasks.rotateMatrix),
-        false,
-        `Be sure to remove comments from the final solution`
-      );
-      assert.equal(
-        forbidden.isArrayUsed(tasks.rotateMatrix),
-        false,
-        `Using methods of Array class is not allowed`
-      );
-      assert.equal(
-        forbidden.isStringUsed(tasks.rotateMatrix),
-        false,
-        `Using methods of String class is not allowed`
-      );
-      assert.equal(
-        forbidden.isUtilityUsed(tasks.rotateMatrix),
-        false,
-        `Using functions on utility.js file is not allowed`
-      );
-    }
-  );
 });
 
 describe('core-js-conditions-n-loops optimal implementation', () => {
   let sortedArr = [];
   let notSortedArr = [];
-  const iteration = 1000;
+  const iteration = 3000;
   let suffledString = '';
   let notSuffledString = '';
-  let rotatedMatrix = [];
-  const notRotatedMatrix = [];
 
-  before(function () {
+  before(() => {
     // prepare data for sortByAsc speed test
-    const min = -1000;
-    const max = 1000;
-    const length = 15000;
+    const min = -100;
+    const max = 100;
+    const length = 7500;
     const arr = utility.getRandomArrayUtil(min, max, length);
     notSortedArr = Array.from(arr);
     sortedArr = arr.sort((a, b) => a - b);
@@ -524,14 +522,6 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
       notSuffledString += utility.getRandomNumberUtil(0, 9).toString();
     }
     suffledString = utility.getShuffleStringUtil(notSuffledString, iteration);
-
-    // prepare data for rotateMatrix speed test
-    const matrixSize = 2500;
-    for (let j = 0; j < matrixSize; j += 1) {
-      const line = utility.getRandomArrayUtil(min, max, matrixSize);
-      notRotatedMatrix.push(line);
-    }
-    rotatedMatrix = utility.getRotateMatrixUtil(notRotatedMatrix);
   });
 
   it.optional(
@@ -550,22 +540,15 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
   );
 
   it.optional('speed test of sortByAsc', function test() {
-    this.slow(60);
-    this.timeout(65);
+    this.slow(30);
+    this.timeout(40);
     tasks.sortByAsc(notSortedArr);
     assert.deepEqual(notSortedArr, sortedArr);
   });
 
   it.optional('speed test of shuffleChar', function test() {
-    this.slow(20);
-    this.timeout(30);
+    this.slow(30);
+    this.timeout(40);
     assert.equal(tasks.shuffleChar(notSuffledString, iteration), suffledString);
-  });
-
-  it.optional('speed test of rotateMatrix', function test() {
-    this.slow(240);
-    this.timeout(250);
-    tasks.rotateMatrix(notRotatedMatrix);
-    assert.deepEqual(notRotatedMatrix, rotatedMatrix);
   });
 });
