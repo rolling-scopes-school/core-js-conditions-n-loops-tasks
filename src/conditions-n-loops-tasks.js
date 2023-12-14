@@ -26,7 +26,7 @@ function isPositive(/* number */) {
 }
 
 /**
- * Returns the maximum of three numbers without using Array class methods.
+ * Returns the maximum of three numbers without using Array and Math classes methods.
  *
  * @param {number} a - The first number.
  * @param {number} b - The second number.
@@ -66,6 +66,7 @@ function canQueenCaptureKing(/* queen, king */) {
 
 /**
  * Determines whether a triangle is isosceles based on its side lengths.
+ * In this task, the use of methods of the String and Array classes is not allowed.
  *
  * @param {number} a - The length of the first side.
  * @param {number} b - The length of the second side.
@@ -87,6 +88,7 @@ function isIsoscelesTriangle(/* a, b, c */) {
 
 /**
  * Converts a number to Roman numerals. The number will be between 1 and 39.
+ * In this task, the use of methods of the String and Array classes is not allowed.
  *
  * @param {number} num - The number to convert.
  * @return {string} The Roman numeral representation of the number.
@@ -104,6 +106,7 @@ function convertToRomanNumerals(/* num */) {
 
 /**
  * Converts a number to a string, replacing digits with words.
+ * In this task, the use of methods of the String and Array classes is not allowed.
  *
  * @param {string} numberStr - The number as a string.
  * @return {string} The number with digits replaced by words.

@@ -34,6 +34,11 @@ describe('core-js-conditions-n-loops', () => {
       false,
       `Using methods of Array class is not allowed`
     );
+    assert.equal(
+      forbidden.isMathUsed(tasks.getMaxNumber),
+      false,
+      `Using methods of Math class is not allowed`
+    );
   });
 
   it.optional(
@@ -134,6 +139,16 @@ describe('core-js-conditions-n-loops', () => {
         false,
         `Be sure to remove comments from the final solution`
       );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.isIsoscelesTriangle),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.isIsoscelesTriangle),
+        false,
+        `Using methods of String class is not allowed`
+      );
     }
   );
 
@@ -155,6 +170,16 @@ describe('core-js-conditions-n-loops', () => {
         forbidden.isCommented(tasks.convertToRomanNumerals),
         false,
         `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.convertToRomanNumerals),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.convertToRomanNumerals),
+        false,
+        `Using methods of String class is not allowed`
       );
     }
   );
@@ -186,6 +211,16 @@ describe('core-js-conditions-n-loops', () => {
         forbidden.isCommented(tasks.convertNumberToString),
         false,
         `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.convertNumberToString),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.convertNumberToString),
+        false,
+        `Using methods of String class is not allowed`
       );
     }
   );
