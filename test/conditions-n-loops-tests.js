@@ -370,6 +370,11 @@ describe('core-js-conditions-n-loops', () => {
         `Using methods of Array class is not allowed`
       );
       assert.equal(
+        forbidden.isStringUsed(tasks.getBalanceIndex),
+        false,
+        `Using methods of String class is not allowed`
+      );
+      assert.equal(
         forbidden.isUtilityUsed(tasks.getBalanceIndex),
         false,
         `Using functions on utility.js file is not allowed`
@@ -533,9 +538,44 @@ describe('core-js-conditions-n-loops', () => {
       );
     }
   );
+
+  it.optional(
+    'getNearestBigger should return the nearest larger number made up of the digits of the original number',
+    () => {
+      assert.strictEqual(tasks.getNearestBigger(12345), 12354);
+      assert.strictEqual(tasks.getNearestBigger(123450), 123504);
+      assert.strictEqual(tasks.getNearestBigger(12344), 12434);
+      assert.strictEqual(tasks.getNearestBigger(123440), 124034);
+      assert.strictEqual(tasks.getNearestBigger(90822), 92028);
+      assert.strictEqual(tasks.getNearestBigger(534976), 536479);
+      assert.strictEqual(tasks.getNearestBigger(52174920893), 52174920938);
+      for (let i = 0; i < 10; i += 1) {
+        const number = utility.getRandomNumberUtil(11111111, 99999999);
+        const nearest = utility.getNearestBiggerUtil(number);
+        assert.strictEqual(tasks.getNearestBigger(number), nearest);
+      }
+      assert.equal(
+        forbidden.isCommented(tasks.getNearestBigger),
+        false,
+        `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.sortByAsc),
+        false,
+        `Using methods of String class is not allowed`
+      );
+      assert.equal(
+        forbidden.isUtilityUsed(tasks.getNearestBigger),
+        false,
+        `Using functions on utility.js file is not allowed`
+      );
+    }
+  );
 });
 
 describe('core-js-conditions-n-loops optimal implementation', () => {
+  let sourceNumber = 0;
+  let nearestNumber = 0;
   let sortedArr = [];
   let notSortedArr = [];
   const iteration = 3000;
@@ -543,6 +583,12 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
   let notSuffledString = '';
 
   before(() => {
+    // prepare data for sortByAsc speed test
+    sourceNumber = utility.getRandomNumberUtil(
+      8888888888888888,
+      999999999999999
+    );
+    nearestNumber = utility.getNearestBiggerUtil(sourceNumber);
     // prepare data for sortByAsc speed test
     const min = -100;
     const max = 100;
@@ -585,5 +631,11 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     this.slow(30);
     this.timeout(40);
     assert.equal(tasks.shuffleChar(notSuffledString, iteration), suffledString);
+  });
+
+  it.optional('speed test of getNearestBigger', function test() {
+    this.slow(1);
+    this.timeout(10);
+    assert.deepEqual(tasks.getNearestBigger(sourceNumber), nearestNumber);
   });
 });

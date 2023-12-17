@@ -18,6 +18,7 @@ The task is to implement functions on different Core JS topics. This module requ
 4. Go to folder `coreJs-conditions-n-loops-tasks`
 5. To install all dependencies use `npm install`
 6. Each task is usually a regular function:
+
    ```javascript
    /**
     * Returns the maximum of three numbers.
@@ -39,6 +40,7 @@ The task is to implement functions on different Core JS topics. This module requ
    ```
 
    Read the task description in the comment above the function. Try to understand the idea. You can see the tests prepared if you don't understand it.
+
 7. Write your code in `src/conditions-n-loops-tasks.js`.
 
    Uncomment the incoming parameters:
