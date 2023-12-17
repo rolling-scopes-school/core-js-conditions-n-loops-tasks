@@ -128,6 +128,7 @@ function isUtilityUsed(fn) {
     'getSpiralMatrixUtil',
     'getNumberToStringUtil',
     'getShuffleStringUtil',
+    'getNearestBiggerUtil',
   ];
   const fnStr = fn.toString();
   return methods.some((method) => fnStr.includes(method));

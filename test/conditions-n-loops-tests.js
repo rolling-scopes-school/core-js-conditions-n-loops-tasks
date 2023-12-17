@@ -34,6 +34,11 @@ describe('core-js-conditions-n-loops', () => {
       false,
       `Using methods of Array class is not allowed`
     );
+    assert.equal(
+      forbidden.isMathUsed(tasks.getMaxNumber),
+      false,
+      `Using methods of Math class is not allowed`
+    );
   });
 
   it.optional(
@@ -134,6 +139,16 @@ describe('core-js-conditions-n-loops', () => {
         false,
         `Be sure to remove comments from the final solution`
       );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.isIsoscelesTriangle),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.isIsoscelesTriangle),
+        false,
+        `Using methods of String class is not allowed`
+      );
     }
   );
 
@@ -155,6 +170,16 @@ describe('core-js-conditions-n-loops', () => {
         forbidden.isCommented(tasks.convertToRomanNumerals),
         false,
         `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.convertToRomanNumerals),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.convertToRomanNumerals),
+        false,
+        `Using methods of String class is not allowed`
       );
     }
   );
@@ -186,6 +211,16 @@ describe('core-js-conditions-n-loops', () => {
         forbidden.isCommented(tasks.convertNumberToString),
         false,
         `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.convertNumberToString),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.convertNumberToString),
+        false,
+        `Using methods of String class is not allowed`
       );
     }
   );
@@ -335,6 +370,11 @@ describe('core-js-conditions-n-loops', () => {
         `Using methods of Array class is not allowed`
       );
       assert.equal(
+        forbidden.isStringUsed(tasks.getBalanceIndex),
+        false,
+        `Using methods of String class is not allowed`
+      );
+      assert.equal(
         forbidden.isUtilityUsed(tasks.getBalanceIndex),
         false,
         `Using functions on utility.js file is not allowed`
@@ -373,6 +413,57 @@ describe('core-js-conditions-n-loops', () => {
       );
       assert.equal(
         forbidden.isUtilityUsed(tasks.getSpiralMatrix),
+        false,
+        `Using functions on utility.js file is not allowed`
+      );
+    }
+  );
+
+  it.optional(
+    'rotateMatrix should return the original array rotated by an angle of 90 degrees clockwise',
+    () => {
+      let arr = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+      ];
+      let result = [
+        [7, 4, 1],
+        [8, 5, 2],
+        [9, 6, 3],
+      ];
+      tasks.rotateMatrix(arr);
+      assert.deepEqual(arr, result);
+      const min = -10;
+      const max = 10;
+      const matrixSize = 5;
+      for (let i = 0; i < 5; i += 1) {
+        arr = [];
+        for (let j = 0; j < matrixSize; j += 1) {
+          const line = utility.getRandomArrayUtil(min, max, matrixSize);
+          arr.push(line);
+        }
+        result = utility.getRotateMatrixUtil(arr);
+        tasks.rotateMatrix(arr);
+        assert.deepEqual(arr, result);
+      }
+      assert.equal(
+        forbidden.isCommented(tasks.rotateMatrix),
+        false,
+        `Be sure to remove comments from the final solution`
+      );
+      assert.equal(
+        forbidden.isArrayUsed(tasks.rotateMatrix),
+        false,
+        `Using methods of Array class is not allowed`
+      );
+      assert.equal(
+        forbidden.isStringUsed(tasks.rotateMatrix),
+        false,
+        `Using methods of String class is not allowed`
+      );
+      assert.equal(
+        forbidden.isUtilityUsed(tasks.rotateMatrix),
         false,
         `Using functions on utility.js file is not allowed`
       );
@@ -449,50 +540,32 @@ describe('core-js-conditions-n-loops', () => {
   );
 
   it.optional(
-    'rotateMatrix should return the original array rotated by an angle of 90 degrees clockwise',
+    'getNearestBigger should return the nearest larger number made up of the digits of the original number',
     () => {
-      let arr = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9],
-      ];
-      let result = [
-        [7, 4, 1],
-        [8, 5, 2],
-        [9, 6, 3],
-      ];
-      tasks.rotateMatrix(arr);
-      assert.deepEqual(arr, result);
-      const min = -10;
-      const max = 10;
-      const matrixSize = 5;
-      for (let i = 0; i < 5; i += 1) {
-        arr = [];
-        for (let j = 0; j < matrixSize; j += 1) {
-          const line = utility.getRandomArrayUtil(min, max, matrixSize);
-          arr.push(line);
-        }
-        result = utility.getRotateMatrixUtil(arr);
-        tasks.rotateMatrix(arr);
-        assert.deepEqual(arr, result);
+      assert.strictEqual(tasks.getNearestBigger(12345), 12354);
+      assert.strictEqual(tasks.getNearestBigger(123450), 123504);
+      assert.strictEqual(tasks.getNearestBigger(12344), 12434);
+      assert.strictEqual(tasks.getNearestBigger(123440), 124034);
+      assert.strictEqual(tasks.getNearestBigger(90822), 92028);
+      assert.strictEqual(tasks.getNearestBigger(534976), 536479);
+      assert.strictEqual(tasks.getNearestBigger(52174920893), 52174920938);
+      for (let i = 0; i < 10; i += 1) {
+        const number = utility.getRandomNumberUtil(11111111, 99999999);
+        const nearest = utility.getNearestBiggerUtil(number);
+        assert.strictEqual(tasks.getNearestBigger(number), nearest);
       }
       assert.equal(
-        forbidden.isCommented(tasks.rotateMatrix),
+        forbidden.isCommented(tasks.getNearestBigger),
         false,
         `Be sure to remove comments from the final solution`
       );
       assert.equal(
-        forbidden.isArrayUsed(tasks.rotateMatrix),
-        false,
-        `Using methods of Array class is not allowed`
-      );
-      assert.equal(
-        forbidden.isStringUsed(tasks.rotateMatrix),
+        forbidden.isStringUsed(tasks.sortByAsc),
         false,
         `Using methods of String class is not allowed`
       );
       assert.equal(
-        forbidden.isUtilityUsed(tasks.rotateMatrix),
+        forbidden.isUtilityUsed(tasks.getNearestBigger),
         false,
         `Using functions on utility.js file is not allowed`
       );
@@ -501,19 +574,25 @@ describe('core-js-conditions-n-loops', () => {
 });
 
 describe('core-js-conditions-n-loops optimal implementation', () => {
+  let sourceNumber = 0;
+  let nearestNumber = 0;
   let sortedArr = [];
   let notSortedArr = [];
-  const iteration = 1000;
+  const iteration = 3000;
   let suffledString = '';
   let notSuffledString = '';
-  let rotatedMatrix = [];
-  const notRotatedMatrix = [];
 
-  before(function () {
+  before(() => {
     // prepare data for sortByAsc speed test
-    const min = -1000;
-    const max = 1000;
-    const length = 15000;
+    sourceNumber = utility.getRandomNumberUtil(
+      8888888888888888,
+      999999999999999
+    );
+    nearestNumber = utility.getNearestBiggerUtil(sourceNumber);
+    // prepare data for sortByAsc speed test
+    const min = -100;
+    const max = 100;
+    const length = 7500;
     const arr = utility.getRandomArrayUtil(min, max, length);
     notSortedArr = Array.from(arr);
     sortedArr = arr.sort((a, b) => a - b);
@@ -524,14 +603,6 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
       notSuffledString += utility.getRandomNumberUtil(0, 9).toString();
     }
     suffledString = utility.getShuffleStringUtil(notSuffledString, iteration);
-
-    // prepare data for rotateMatrix speed test
-    const matrixSize = 2500;
-    for (let j = 0; j < matrixSize; j += 1) {
-      const line = utility.getRandomArrayUtil(min, max, matrixSize);
-      notRotatedMatrix.push(line);
-    }
-    rotatedMatrix = utility.getRotateMatrixUtil(notRotatedMatrix);
   });
 
   it.optional(
@@ -550,8 +621,8 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
   );
 
   it.optional('speed test of sortByAsc', function test() {
-    this.slow(60);
-    this.timeout(65);
+    this.slow(30);
+    this.timeout(40);
     tasks.sortByAsc(notSortedArr);
     assert.deepEqual(notSortedArr, sortedArr);
   });
@@ -562,10 +633,9 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
     assert.equal(tasks.shuffleChar(notSuffledString, iteration), suffledString);
   });
 
-  it.optional('speed test of rotateMatrix', function test() {
-    this.slow(240);
-    this.timeout(250);
-    tasks.rotateMatrix(notRotatedMatrix);
-    assert.deepEqual(notRotatedMatrix, rotatedMatrix);
+  it.optional('speed test of getNearestBigger', function test() {
+    this.slow(1);
+    this.timeout(10);
+    assert.deepEqual(tasks.getNearestBigger(sourceNumber), nearestNumber);
   });
 });

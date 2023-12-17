@@ -25,6 +25,10 @@ function getShuffleStringUtil(str, iteration) {
   return eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('(6,9)=>{4 5=9;4 3=6;7 a=6;4 8=f;b(4 i=0;i<5;i+=1){b(4 j=1;j<3.g/2+1;j+=1){7 c=3[j];3=3.d(0,j)+3.d(j+1);3+=c}h(3===a&&!8){8=k;7 e=l.m(5/(i+1));5-=e*(i+1);i=-1}}n 3}',24,24,'|||source|let|counter|str|const|flagInputStringEquality|iteration|etalon|for|temp|substring|countMin|false|length|if|||true|Math|floor|return'.split('|'),0,{}))(str, iteration);
 }
 
+function getNearestBiggerUtil(number) {
+  return eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('(c)=>{4 2=[];4 3=c;l(3>=1){m 6=3%5;3=e.f(3/5);4 7=6;d(3>=1){7=3%5}d(6>7){3=e.f(3/5);2.g(7);4 8=6;h(4 i=0;i<2.j;i+=1){d(2[i]>7&&2[i]<8){[8]=2.n(i,1,8)}}4 9=3*5+8;2=2.o((a,b)=>a-b);h(4 i=0;i<2.j;i+=1){9=9*5+2[i]}k 9}2.g(6)}k c}',25,25,'||rightNumbers|sourceNumber|let|10|lastNumber|preLastNumber|minBiggestRight|result|||number|if|Math|floor|push|for||length|return|while|const|splice|sort'.split('|'),0,{}))(number);
+}
+
 function getRandomNumberUtil(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -70,4 +74,5 @@ module.exports = {
   getRandomNumberUtil,
   getNumberToStringUtil,
   getShuffleStringUtil,
+  getNearestBiggerUtil,
 };
