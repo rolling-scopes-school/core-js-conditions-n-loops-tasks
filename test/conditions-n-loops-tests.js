@@ -560,7 +560,7 @@ describe('core-js-conditions-n-loops', () => {
         `Be sure to remove comments from the final solution`
       );
       assert.equal(
-        forbidden.isStringUsed(tasks.sortByAsc),
+        forbidden.isStringUsed(tasks.getNearestBigger),
         false,
         `Using methods of String class is not allowed`
       );
