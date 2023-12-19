@@ -578,21 +578,22 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
   let nearestNumber = 0;
   let sortedArr = [];
   let notSortedArr = [];
-  const iteration = 3000;
+  const iteration = 10000;
   let suffledString = '';
   let notSuffledString = '';
 
   before(() => {
-    // prepare data for sortByAsc speed test
+    // prepare data for getNearestBigger speed test
     sourceNumber = utility.getRandomNumberUtil(
       8888888888888888,
       999999999999999
     );
     nearestNumber = utility.getNearestBiggerUtil(sourceNumber);
+
     // prepare data for sortByAsc speed test
     const min = -100;
     const max = 100;
-    const length = 7500;
+    const length = 9000;
     const arr = utility.getRandomArrayUtil(min, max, length);
     notSortedArr = Array.from(arr);
     sortedArr = arr.sort((a, b) => a - b);
@@ -621,8 +622,8 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
   );
 
   it.optional('speed test of sortByAsc', function test() {
-    this.slow(30);
-    this.timeout(40);
+    this.slow(25);
+    this.timeout(35);
     tasks.sortByAsc(notSortedArr);
     assert.deepEqual(notSortedArr, sortedArr);
   });
