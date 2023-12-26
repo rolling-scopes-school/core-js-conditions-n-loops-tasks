@@ -89,7 +89,7 @@ describe('core-js-conditions-n-loops', () => {
         false
       );
       assert.equal(
-        forbidden.isCommented(tasks.getMaxNumber),
+        forbidden.isCommented(tasks.canQueenCaptureKing),
         false,
         `Be sure to remove comments from the final solution`
       );
