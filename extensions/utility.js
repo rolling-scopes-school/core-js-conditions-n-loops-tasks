@@ -41,6 +41,12 @@ function getRandomArrayUtil(min, max, count) {
     return arr;
 }
 
+function checkBalancedArrayUtil(arr, balanceIndex) {
+  const reversedArray = Array.from(arr).reverse();
+  const reversedBalanceIndex = getBalanceIndexUtil(reversedArray);
+  return balanceIndex === arr.length - 1 - reversedBalanceIndex;
+}
+
 function getBalancedArrayUtil(length) {
   const minNumber = -10;
   const maxNumber = 10;
@@ -60,6 +66,9 @@ function getBalancedArrayUtil(length) {
   }
   arr.push(summLeft);
   balanceIndex = getBalanceIndexUtil(arr);
+  if (!checkBalancedArrayUtil(arr, balanceIndex)) {
+    return getBalancedArrayUtil(length);
+  }
   return {
     arr,
     balanceIndex,
