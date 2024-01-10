@@ -294,8 +294,67 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  const matrix = [];
+  for (let i = 0; i < size; i += 1) {
+    matrix[i] = [];
+    for (let j = 0; j < size; j += 1) {
+      matrix[i][j] = null;
+    }
+  }
+  let col = -1;
+  let row = 0;
+  let isGoForward = true;
+  let isGoDown = true;
+  let isActiveRowDirection = true;
+
+  for (let i = 0; i < size * size; i += 1) {
+    if (isActiveRowDirection) {
+      if (isGoForward) {
+        if (col + 1 >= size) {
+          row += 1;
+          isGoDown = true;
+          isActiveRowDirection = false;
+        } else if (matrix[row][col + 1] === null) col += 1;
+        else {
+          row += 1;
+          isGoDown = true;
+          isActiveRowDirection = false;
+        }
+      } else if (col - 1 < 0) {
+        row -= 1;
+        isGoDown = false;
+        isActiveRowDirection = false;
+      } else if (matrix[row][col - 1] === null) col -= 1;
+      else {
+        row -= 1;
+        isGoDown = false;
+        isActiveRowDirection = false;
+      }
+    } else if (isGoDown) {
+      if (row + 1 >= size) {
+        col -= 1;
+        isGoForward = false;
+        isActiveRowDirection = true;
+      } else if (matrix[row + 1][col] === null) row += 1;
+      else {
+        col -= 1;
+        isGoForward = false;
+        isActiveRowDirection = true;
+      }
+    } else if (row - 1 < 0) {
+      col += 1;
+      isGoForward = true;
+      isActiveRowDirection = true;
+    } else if (matrix[row - 1][col] === null) row -= 1;
+    else {
+      col += 1;
+      isGoForward = true;
+      isActiveRowDirection = true;
+    }
+    matrix[row][col] = i + 1;
+  }
+  return matrix;
 }
 
 /**
