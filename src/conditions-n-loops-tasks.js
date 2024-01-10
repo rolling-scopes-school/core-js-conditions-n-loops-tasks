@@ -311,47 +311,27 @@ function getSpiralMatrix(size) {
   for (let i = 0; i < size * size; i += 1) {
     if (isActiveRowDirection) {
       if (isGoForward) {
-        if (col + 1 >= size) {
+        if (col + 1 >= size || matrix[row][col + 1] !== null) {
           row += 1;
           isGoDown = true;
           isActiveRowDirection = false;
-        } else if (matrix[row][col + 1] === null) col += 1;
-        else {
-          row += 1;
-          isGoDown = true;
-          isActiveRowDirection = false;
-        }
-      } else if (col - 1 < 0) {
+        } else col += 1;
+      } else if (col - 1 < 0 || matrix[row][col - 1] !== null) {
         row -= 1;
         isGoDown = false;
         isActiveRowDirection = false;
-      } else if (matrix[row][col - 1] === null) col -= 1;
-      else {
-        row -= 1;
-        isGoDown = false;
-        isActiveRowDirection = false;
-      }
+      } else col -= 1;
     } else if (isGoDown) {
-      if (row + 1 >= size) {
+      if (row + 1 >= size || matrix[row + 1][col] !== null) {
         col -= 1;
         isGoForward = false;
         isActiveRowDirection = true;
-      } else if (matrix[row + 1][col] === null) row += 1;
-      else {
-        col -= 1;
-        isGoForward = false;
-        isActiveRowDirection = true;
-      }
-    } else if (row - 1 < 0) {
+      } else row += 1;
+    } else if (row - 1 < 0 || matrix[row - 1][col] !== null) {
       col += 1;
       isGoForward = true;
       isActiveRowDirection = true;
-    } else if (matrix[row - 1][col] === null) row -= 1;
-    else {
-      col += 1;
-      isGoForward = true;
-      isActiveRowDirection = true;
-    }
+    } else row -= 1;
     matrix[row][col] = i + 1;
   }
   return matrix;
