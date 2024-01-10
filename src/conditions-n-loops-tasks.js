@@ -260,22 +260,14 @@ function isContainNumber(num, digit) {
  */
 function getBalanceIndex(arr) {
   if (arr.length < 3) return -1;
-  let indexLeft = 0;
-  let indexRight = arr.length - 1;
-  let leftSum = arr[indexLeft];
-  let rightSum = arr[indexRight];
-  let isContinue = indexLeft < indexRight;
-  while (isContinue) {
-    if (leftSum < rightSum) {
-      indexLeft += 1;
-      leftSum += arr[indexLeft];
-    } else {
-      indexRight -= 1;
-      rightSum += arr[indexRight];
-    }
-    isContinue = indexLeft + 2 < indexRight;
+  const middle = Math.trunc(arr.length / 2);
+  let leftSum = 0;
+  let rightSum = 0;
+  for (let i = 0, j = arr.length - 1; i < middle; i += 1, j -= 1) {
+    leftSum += arr[i];
+    rightSum += j === middle ? 0 : arr[j];
   }
-  return leftSum === rightSum ? indexLeft + 1 : -1;
+  return leftSum === rightSum ? middle : -1;
 }
 
 // const length = 9;
