@@ -408,8 +408,6 @@ function sortByAsc(arr) {
   return arr2;
 }
 
-// console.log(sortByAsc([-2, 9, 5, -3]));
-
 /**
  * Shuffles characters in a string so that the characters with an odd index are moved to the end of the string at each iteration.
  * Take into account that the string can be very long and the number of iterations is large. Consider how you can optimize your solution.
@@ -427,8 +425,23 @@ function sortByAsc(arr) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  if (str.length < 2 || iterations < 1) {
+    return str;
+  }
+  let str2 = str;
+  for (let i = 1; i <= iterations; i += 1) {
+    let oddPart = '';
+    let evenPart = '';
+    for (let j = 0; j < str.length; j += 1) {
+      const isEven = j % 2 === 0;
+      if (isEven) evenPart += str2[j];
+      else oddPart += str2[j];
+    }
+    str2 = evenPart + oddPart;
+    if (str2 === str) return shuffleChar(str, iterations % i);
+  }
+  return str2;
 }
 
 /**
