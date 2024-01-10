@@ -260,66 +260,18 @@ function isContainNumber(num, digit) {
  */
 function getBalanceIndex(arr) {
   if (arr.length < 3) return -1;
-  const middle = Math.trunc(arr.length / 2);
   let leftSum = 0;
   let rightSum = 0;
-  for (let i = 0, j = arr.length - 1; i < middle; i += 1, j -= 1) {
-    leftSum += arr[i];
-    rightSum += j === middle ? 0 : arr[j];
+  for (let i = 1; i < arr.length; i += 1) {
+    rightSum += arr[i];
   }
-  return leftSum === rightSum ? middle : -1;
+  for (let i = 0; i < arr.length; i += 1) {
+    if (leftSum === rightSum) return i;
+    leftSum += arr[i];
+    rightSum -= arr[i + 1];
+  }
+  return -1;
 }
-
-// const length = 9;
-// for (let i = 0; i < 5; i += 1) {
-//   const balanced = getBalancedArrayUtil(length * (i + 1));
-//   console.log(balanced.arr);
-//   console.log(getBalanceIndex(balanced.arr));
-// }
-
-// function getBalancedArrayUtil(length) {
-//   const minNumber = -10;
-//   const maxNumber = 10;
-//   let balanceIndex = getRandomNumberUtil(2, length - 2)
-//   const arr = [];
-//   let summLeft = 0;
-//   for (let i = 0; i < balanceIndex; i += 1) {
-//     const number = getRandomNumberUtil(minNumber, maxNumber);
-//     summLeft += number;
-//     arr.push(number);
-//   }
-//   arr.push(getRandomNumberUtil(minNumber, maxNumber));
-//   for (let i = balanceIndex + 1; i < length - 1; i += 1) {
-//     const number = getRandomNumberUtil(minNumber, maxNumber);
-//     summLeft -= number;
-//     arr.push(number);
-//   }
-//   arr.push(summLeft);
-//   balanceIndex = getBalanceIndexUtil(arr);
-//   if (!checkBalancedArrayUtil(arr, balanceIndex)) {
-//     return getBalancedArrayUtil(length);
-//   }
-//   return {
-//     arr,
-//     balanceIndex,
-//   };
-// }
-
-// function getRandomNumberUtil(min, max) {
-//   return Math.floor(Math.random() * (max - min + 1) + min);
-// }
-
-// function getBalanceIndexUtil(arr) {
-//   return eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('(3)=>{b(3.7<=2){8-1}5 9=3[0];c(5 4=1;4<3.7;4+=1){5 a=0;c(5 6=4+1;6<3.7;6+=1){a+=3[6]}b(9===a){8 4}9+=3[4]}8-1}',13,13,'|||arr|i|let|j|length|return|leftSumm|rightSumm|if|for'.split('|'),0,{}))(arr);
-// }
-
-// function checkBalancedArrayUtil(arr, balanceIndex) {
-//   const reversedArray = Array.from(arr).reverse();
-//   const reversedBalanceIndex = getBalanceIndexUtil(reversedArray);
-//   return balanceIndex === arr.length - 1 - reversedBalanceIndex;
-// }
-
-// console.log(getBalanceIndex([1, 2, 3, 4, 5]));
 
 /**
  * Generates a spiral matrix of a given size, filled with numbers in ascending order starting from one.
