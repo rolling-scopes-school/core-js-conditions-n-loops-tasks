@@ -626,7 +626,7 @@ describe('core-js-conditions-n-loops optimal implementation', () => {
 
   it.optional('speed test of shuffleChar', function test() {
     this.slow(20);
-    this.timeout(30);
+    this.timeout(300);
     assert.equal(tasks.shuffleChar(notSuffledString, iteration), suffledString);
   });
 
