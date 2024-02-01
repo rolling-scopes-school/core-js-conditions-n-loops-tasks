@@ -74,6 +74,19 @@ The task is to implement functions on different Core JS topics. This module requ
 - Please be sure that each of your test in limit of 30sec.
 - You will get 0 (zero) if you have any eslint's errors or warnings.
 
+# Obfuscated Functions in the Test Suite
+
+In this project, the test suite includes obfuscated functions that contain the solution to the algorithmic tasks. The purpose of obfuscation is to conceal the direct implementation details while still providing a mechanism to verify the correctness of the solution.
+
+## Why Obfuscation?
+
+1. **Security and Academic Integrity:**
+   - Obfuscation helps protect the integrity of the test suite and prevents unauthorized access to the solution.
+   - It discourages plagiarism and ensures that students engage with the problem-solving process rather than relying on pre-existing code snippets.
+
+2. **Focus on Algorithmic Understanding:**
+   - By obfuscating the functions, the emphasis is placed on understanding the underlying algorithm and logic rather than relying on pre-existing code snippets.
+
 ## FAQ
 
 **Question:** I use Windows machine and have received a lot of errors like "Expected linebreaks to be 'LF' but found 'CRLF'". How to handle it?<br>
