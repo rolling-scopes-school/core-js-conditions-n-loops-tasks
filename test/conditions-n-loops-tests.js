@@ -268,7 +268,7 @@ describe('core-js-conditions-n-loops', () => {
   );
 
   it.optional(
-    'getIndexOf should return a bool value if the string contains the desired letter',
+    'getIndexOf should return the index of the first occurrence if the string contains the desired letter',
     () => {
       assert.equal(tasks.getIndexOf('qwerty', 'q'), 0);
       assert.equal(tasks.getIndexOf('qwerty', 't'), 4);
