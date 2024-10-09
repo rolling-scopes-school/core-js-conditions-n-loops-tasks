@@ -66,7 +66,7 @@ function getBalancedArrayUtil(length) {
   }
   arr.push(summLeft);
   balanceIndex = getBalanceIndexUtil(arr);
-  if (!checkBalancedArrayUtil(arr, balanceIndex)) {
+  if (!checkBalancedArrayUtil(arr, balanceIndex) || summLeft === 0) {
     return getBalancedArrayUtil(length);
   }
   return {

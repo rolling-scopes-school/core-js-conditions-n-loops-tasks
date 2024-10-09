@@ -74,6 +74,18 @@ The task is to implement functions on different Core JS topics. This module requ
 - Please be sure that each of your test in limit of 30sec.
 - You will get 0 (zero) if you have any eslint's errors or warnings.
 
+## Obfuscated Functions in the Test Suite
+
+In this project, the test suite includes obfuscated functions that contain the solution to the algorithmic tasks. The purpose of obfuscation is to conceal the direct implementation details while still providing a mechanism to verify the correctness of the solution.
+
+## Why Obfuscation?
+
+1. **Security and Academic Integrity:**
+  - Obfuscation helps protect the integrity of the test suite and prevents unauthorized access to the solution.
+  - It discourages plagiarism and ensures that students engage with the problem-solving process rather than relying on pre-existing code snippets.
+2. **Focus on Algorithmic Understanding:**
+  - By obfuscating the functions, the emphasis is placed on understanding the underlying algorithm and logic rather than relying on pre-existing code snippets.
+
 ## FAQ
 
 **Question:** I use Windows machine and have received a lot of errors like "Expected linebreaks to be 'LF' but found 'CRLF'". How to handle it?<br>
@@ -96,6 +108,18 @@ $ npm run lint:fix
 
 **Question:** The solution in the local repository succeeds and all tests are "green", but in the application some tests don't count. What to do?<br>
 **Answer**: [Update your repository fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork), update the local repository from the fork, run tests and fix your solution. After fixing, resubmit your solution for testing.
+
+**Question:** The solution in the local repository succeeds and all tests are "green", fork is up-to-date, but in the application some tests don't count. What to do?<br>
+**Answer**: Some tests generate a new data set each time they run. Maybe your solution is not universal and fails in certain situations. Run the tests 3-5 times and make sure they complete successfully.
+
+**Question:** The number of milliseconds is written in yellow or red next to the result of the individual tests. What does this mean?<br>
+**Answer**: This means that your solution's speed test most likely fails on the server, but passes with you because your computer is fast enough. You need to revise the solution and improve the execution time.
+
+**Question:** I don't trust the obfuscated code in the tests. How can I verify my solution?<br>
+**Answer**: You can use tools to containerize the solution. For example, [using Docker](https://docs.docker.com/guides/language/nodejs/) you can run tests in an isolated container.
+
+**Question:** What happens if I use the ready-made solution found in the test utilities?<br>
+**Answer**: It is a violation of school policy to use an off-the-shelf solution, and you should carefully review the [section of the documentation that describes this](https://docs.rs.school/#/dismission).
 
 ---
 
