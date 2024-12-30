@@ -64,10 +64,10 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
 function canQueenCaptureKing(queen, king) {
-  const qRow = queen[0],
-    qCol = queen[1];
-  const kRow = king[0],
-    kCol = king[1];
+  const qRow = queen[0];
+  const qCol = queen[1];
+  const kRow = king[0];
+  const kCol = king[1];
 
   return (
     qRow === kRow ||
@@ -178,7 +178,7 @@ function convertNumberToString(numberStr) {
   };
 
   let result = '';
-  for (let i = 0; i < numberStr.length; i++) {
+  for (let i = 0; i < numberStr.length; i += 1) {
     const char = numberStr[i];
     if (digitWords[char] !== undefined) {
       if (result !== '') result += ' ';
@@ -209,8 +209,8 @@ function isPalindrome(str) {
     if (str[left] !== str[right]) {
       return false;
     }
-    left++;
-    right--;
+    left += 1;
+    right -= 1;
   }
 
   return true;
@@ -230,15 +230,14 @@ function isPalindrome(str) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
+
 function getIndexOf(str, letter) {
-  function getIndexOf(str, letter) {
-    for (let i = 0; i < str.length; i++) {
-      if (str[i] === letter) {
-        return i;
-      }
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) {
+      return i;
     }
-    return -1;
   }
+  return -1;
 }
 
 /**
@@ -257,11 +256,12 @@ function getIndexOf(str, letter) {
  *  12345, 6    => false
  */
 function isContainNumber(num, digit) {
-  while (num > 0) {
-    if (num % 10 === digit) {
+  let tempNum = num; // Assign the parameter to a new variable
+  while (tempNum > 0) {
+    if (tempNum % 10 === digit) {
       return true;
     }
-    num = Math.floor(num / 10);
+    tempNum = Math.floor(tempNum / 10);
   }
   return false;
 }
@@ -282,13 +282,13 @@ function isContainNumber(num, digit) {
 function getBalanceIndex(arr) {
   let totalSum = 0;
 
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i += 1) {
     totalSum += arr[i];
   }
 
   let leftSum = 0;
 
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i += 1) {
     totalSum -= arr[i];
 
     if (leftSum === totalSum) {
@@ -323,39 +323,43 @@ function getBalanceIndex(arr) {
  *        ]
  */
 function getSpiralMatrix(size) {
-  let matrix = [];
+  const matrix = [];
 
-  for (let i = 0; i < size; i++) {
+  for (let i = 0; i < size; i += 1) {
     matrix[i] = [];
   }
 
-  let left = 0,
-    right = size - 1,
-    top = 0,
-    bottom = size - 1;
+  let left = 0;
+  let right = size - 1;
+  let top = 0;
+  let bottom = size - 1;
   let num = 1;
 
   while (left <= right && top <= bottom) {
-    for (let i = left; i <= right; i++) {
-      matrix[top][i] = num++;
+    for (let i = left; i <= right; i += 1) {
+      matrix[top][i] = num;
+      num += 1;
     }
-    top++;
+    top += 1;
 
-    for (let i = top; i <= bottom; i++) {
-      matrix[i][right] = num++;
+    for (let i = top; i <= bottom; i += 1) {
+      matrix[i][right] = num;
+      num += 1;
     }
-    right--;
+    right -= 1;
 
     if (left <= right && top <= bottom) {
-      for (let i = right; i >= left; i--) {
-        matrix[bottom][i] = num++;
+      for (let i = right; i >= left; i -= 1) {
+        matrix[bottom][i] = num;
+        num += 1;
       }
-      bottom--;
+      bottom -= 1;
 
-      for (let i = bottom; i >= top; i--) {
-        matrix[i][left] = num++;
+      for (let i = bottom; i >= top; i -= 1) {
+        matrix[i][left] = num;
+        num += 1;
       }
-      left++;
+      left += 1;
     }
   }
 
@@ -377,33 +381,34 @@ function getSpiralMatrix(size) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-function rotateMatrix(matrix) {
-  let size = matrix.length;
+function rotateMatrix(inputMatrix) {
+  const size = inputMatrix.length; // Changed let to const
+  const copiedMatrix = inputMatrix.map((row) => [...row]); // Deep copy of the input matrix
 
   // Step 1: Transpose the matrix
-  for (let i = 0; i < size; i++) {
-    for (let j = i + 1; j < size; j++) {
-      let temp = matrix[i][j];
-      matrix[i][j] = matrix[j][i];
-      matrix[j][i] = temp;
+  for (let i = 0; i < size; i += 1) {
+    for (let j = i + 1; j < size; j += 1) {
+      const temp = copiedMatrix[i][j]; // Use const because temp is never reassigned
+      copiedMatrix[i][j] = copiedMatrix[j][i]; // Modifying the copied matrix
+      copiedMatrix[j][i] = temp; // Modifying the copied matrix
     }
   }
-
   // Step 2: Reverse each row
-  for (let i = 0; i < size; i++) {
-    let left = 0,
-      right = size - 1;
+  for (let i = 0; i < size; i += 1) {
+    let left = 0;
+    let right = size - 1;
     while (left < right) {
-      let temp = matrix[i][left];
-      matrix[i][left] = matrix[i][right];
-      matrix[i][right] = temp;
-      left++;
-      right--;
+      const temp = copiedMatrix[i][left]; // Use const because temp is never reassigned
+      copiedMatrix[i][left] = copiedMatrix[i][right]; // Modifying the copied matrix
+      copiedMatrix[i][right] = temp; // Modifying the copied matrix
+      left += 1; // Replaced ++ with += 1
+      right -= 1; // Replaced -- with -= 1
     }
   }
 
-  return matrix;
+  return copiedMatrix; // Return the rotated matrix
 }
+
 /**
  * Sorts an array of numbers in ascending order in place.
  * Employ any sorting algorithm of your choice.
@@ -419,23 +424,24 @@ function rotateMatrix(matrix) {
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
 function sortByAsc(arr) {
-  let n = arr.length;
+  const copiedArr = [...arr]; // Create a copy of the array to avoid modifying the input array
+  let n = copiedArr.length;
   let swapped;
 
   do {
     swapped = false;
-    for (let i = 0; i < n - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-        let temp = arr[i];
-        arr[i] = arr[i + 1];
-        arr[i + 1] = temp;
+    for (let i = 0; i < n - 1; i += 1) {
+      if (copiedArr[i] > copiedArr[i + 1]) {
+        const temp = copiedArr[i]; // Use const because temp is never reassigned
+        copiedArr[i] = copiedArr[i + 1];
+        copiedArr[i + 1] = temp;
         swapped = true;
       }
     }
-    n--; // Each iteration places the largest element at the end, so we reduce the size of the unsorted portion
+    n -= 1; // Replace -- with -= 1
   } while (swapped);
 
-  return arr;
+  return copiedArr; // Return the sorted copy of the array
 }
 
 /**
@@ -458,12 +464,12 @@ function sortByAsc(arr) {
 function shuffleChar(str, iterations) {
   let currentString = str;
 
-  for (let i = 0; i < iterations; i++) {
+  for (let i = 0; i < iterations; i += 1) {
     let evenChars = '';
     let oddChars = '';
 
     // Separate characters based on even and odd indices
-    for (let j = 0; j < currentString.length; j++) {
+    for (let j = 0; j < currentString.length; j += 1) {
       if (j % 2 === 0) {
         evenChars += currentString[j];
       } else {
@@ -496,7 +502,7 @@ function shuffleChar(str, iterations) {
  * @returns {number} The nearest larger number, or original number if none exists.
  */
 function getNearestBigger(number) {
-  let digits = [];
+  const digits = [];
   let tempNumber = number;
 
   while (tempNumber > 0) {
@@ -506,7 +512,7 @@ function getNearestBigger(number) {
 
   let i = 0;
   while (i < digits.length - 1 && digits[i] >= digits[i + 1]) {
-    i++;
+    i += 1;
   }
 
   if (i === digits.length - 1) {
@@ -515,25 +521,25 @@ function getNearestBigger(number) {
 
   let j = 0;
   while (digits[j] <= digits[i]) {
-    j++;
+    j += 1;
   }
 
-  let temp = digits[i];
+  const tempSwap = digits[i];
   digits[i] = digits[j];
-  digits[j] = temp;
+  digits[j] = tempSwap;
 
-  let left = 0,
-    right = digits.length - 1;
+  let left = 0;
+  let right = digits.length - 1;
   while (left < right) {
-    let temp = digits[left];
+    const tempReverse = digits[left];
     digits[left] = digits[right];
-    digits[right] = temp;
-    left++;
-    right--;
+    digits[right] = tempReverse;
+    left += 1;
+    right -= 1;
   }
 
   let result = 0;
-  for (let k = digits.length - 1; k >= 0; k--) {
+  for (let k = digits.length - 1; k >= 0; k -= 1) {
     result = result * 10 + digits[k];
   }
 
