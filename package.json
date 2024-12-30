@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/rolling-scopes-school/coreJs-conditions-n-loops-tasks/issues"
   },
-  "homepage": "https://github.com/rolling-scopes-school/coreJs-conditions-n-loops-tasks#readme"
+  "homepage": "https://github.com/rolling-scopes-school/coreJs-conditions-n-loops-tasks#readme",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
 }
