@@ -165,6 +165,62 @@ function convertToRomanNumerals(num) {
  *  '1950.2'  => 'one nine five zero point two'
  */
 function convertNumberToString(/* numberStr */) {
+  // let result = '';
+  // let num = numberStr;
+  // if (num[0] === '-') {
+  //   result += 'minus ';
+  //   num = num.slice(1);
+  // }
+  // let i = 0;
+  // let hasDecimal = false;
+  // let isFirstChar = true;
+  // while (i < num.length) {
+  //   const char = num[i];
+  //   if (char === '.' || char === ',') {
+  //     if (!hasDecimal) {
+  //       result += ' point';
+  //       hasDecimal = true;
+  //     }
+  //   } else {
+  //     switch (char) {
+  //       case '0':
+  //         result += isFirstChar ? 'zero' : ' zero';
+  //         break;
+  //       case '1':
+  //         result += isFirstChar ? 'one' : ' one';
+  //         break;
+  //       case '2':
+  //         result += isFirstChar ? 'two' : ' two';
+  //         break;
+  //       case '3':
+  //         result += isFirstChar ? 'three' : ' three';
+  //         break;
+  //       case '4':
+  //         result += isFirstChar ? 'four' : ' four';
+  //         break;
+  //       case '5':
+  //         result += isFirstChar ? 'five' : ' five';
+  //         break;
+  //       case '6':
+  //         result += isFirstChar ? 'six' : ' six';
+  //         break;
+  //       case '7':
+  //         result += isFirstChar ? 'seven' : 'seven';
+  //         break;
+  //       case '8':
+  //         result += isFirstChar ? 'eight' : ' eight';
+  //         break;
+  //       case '9':
+  //         result += isFirstChar ? 'nine' : ' nine';
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //   }
+  //   isFirstChar = false;
+  //   i += 1;
+  // }
+  // return result.trim();
   throw new Error('Not implemented');
 }
 
@@ -180,8 +236,14 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const len = str.length;
+  for (let i = 0; i < len / 2; i += 1) {
+    if (str[i] !== str[len - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -198,8 +260,13 @@ function isPalindrome(/* str */) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (letter === str[i]) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
@@ -217,8 +284,15 @@ function getIndexOf(/* str, letter */) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  let number = num;
+  while (number > 0) {
+    if (number % 10 === digit) {
+      return true;
+    }
+    number = Math.floor(number / 10);
+  }
+  return false;
 }
 
 /**
@@ -234,8 +308,20 @@ function isContainNumber(/* num, digit */) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(/* arr */) {
-  throw new Error('Not implemented');
+function getBalanceIndex(arr) {
+  let totalSum = 0;
+  let leftSum = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    totalSum += arr[i];
+  }
+  for (let i = 0; i < arr.length; i += 1) {
+    const rightSum = totalSum - leftSum - arr[i];
+    if (leftSum === rightSum) {
+      return i;
+    }
+    leftSum += arr[i];
+  }
+  return -1;
 }
 
 /**
