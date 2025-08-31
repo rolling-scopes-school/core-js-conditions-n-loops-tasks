@@ -50,8 +50,9 @@ function getMaxNumber(/* a, b, c */) {
  *  x: number,
  *  y: number
  * }} Position
- * @param {Object} queen - The position of the queen.
- * @param {Object} king - The position of the king.
+ *
+ * @param {Position} queen - The position of the queen.
+ * @param {Position} king - The position of the king.
  * @return {boolean} True if the queen can capture the king, false otherwise.
  *
  * @example
@@ -281,6 +282,9 @@ function shuffleChar(/* str, iterations */) {
  * If there is no such number, it returns the original number.
  * Usage of String class methods is not allowed in this task.
  *
+ * @param {number} number The source number
+ * @returns {number} The nearest larger number, or original number if none exists.
+ *
  * @example:
  * 12345    => 12354
  * 123450   => 123504
@@ -290,8 +294,6 @@ function shuffleChar(/* str, iterations */) {
  * 90822    => 92028
  * 321321   => 322113
  *
- * @param {number} number The source number
- * @returns {number} The nearest larger number, or original number if none exists.
  */
 function getNearestBigger(/* number */) {
   throw new Error('Not implemented');
